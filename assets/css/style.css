@@ -259,7 +259,7 @@ button:hover {
 
 hr.custom-hr-index {
   border: none; /* Remove a borda padrão */
-  height: 5px; /* Define a altura da linha */
+  height: 4px; /* Define a altura da linha */
   width: 100%; /* Define a largura da linha */
   background-color: #6221feFF; /* Define a cor da linha */
   margin: 20px 0px; /* Define a margem superior e inferior da linha */
@@ -269,7 +269,7 @@ hr.custom-hr-index {
 
 hr.custom-hr-shop {
   border: none; /* Remove a borda padrão */
-  height: 5px; /* Define a altura da linha */
+  height: 4px; /* Define a altura da linha */
   width: 15%; /* Define a largura da linha */
   background-color: #6221feFF; /* Define a cor da linha */
   margin: 20px 0px; /* Define a margem superior e inferior da linha */
@@ -279,7 +279,7 @@ hr.custom-hr-shop {
 
 hr.custom-hr-cart {
   border: none; /* Remove a borda padrão */
-  height: 5px; /* Define a altura da linha */
+  height: 4px; /* Define a altura da linha */
   width: 20%; /* Define a largura da linha */
   background-color: #6221feFF; /* Define a cor da linha */
   margin: 20px 0px; /* Define a margem superior e inferior da linha */
@@ -954,6 +954,8 @@ body.dark-mode .card.categ {
   align-items: center;
   flex-direction: column;
   z-index: 2;
+
+  text-align: center;
 }
 
 .card.categ .contentBox h3 {
@@ -1052,7 +1054,9 @@ body.dark-mode .btn-secondary {
 .cart-quantity {
   background-color: #6221fe;
   color: #fff;
-  padding: 2px 5px;
+  padding: 7px;
+  width: auto;
+  height: auto;
   border-radius: 50%;
   margin: -5px;
   font-size: 1rem;

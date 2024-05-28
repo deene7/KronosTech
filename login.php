@@ -112,7 +112,7 @@ if(isset($_POST['login_btn'])) {
 <section class="my-5 py-5">
     <div class="container text-center mt-3 pt-5">
         <h2 class="form-weight-bold">Login</h2>
-        <hr class="custom-hr-shop mx-auto">
+        <br>
     </div>
     <div class="mx-auto container">
         <form id="login-form" method="POST" action="login.php">

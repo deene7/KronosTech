@@ -1,0 +1,1059 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+/* Estilos para telas pequenas usando media queries */
+@media only screen and (max-width: 990px) {
+  .nav-buttons {
+    margin: 10px;
+  }
+  .nav-buttons ul {
+    margin: 1rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+  /* Estilos separados para os ícones do carrinho e do usuário */
+  .nav-buttons ul .cart,
+  .nav-buttons ul .person {
+    margin: 20px 5px 10px 20px;
+  }
+
+  /* Ajuste para o logotipo para ocupar menos espaço */
+  .navbar .navbar-brand img {
+    height: 30px;
+  }
+
+  .navbar-collapse {
+    justify-content: left;
+  }
+
+  .row-cards {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    justify-items: center;
+  }
+}
+
+
+/* Define o posicionamento horizontal das abas na barra de navegação */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between; /* Coloca os itens o mais distante possível um do outro */
+  align-items: center; /* Alinha verticalmente os itens ao centro */
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+/* Reseta margens, preenchimentos e utiliza a caixa de modelagem de borda para todos os elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Define a fonte principal para o corpo do documento */
+body {
+  font-family: "Poppins", sans-serif;
+  transition: background-color 0.5s ease;
+}
+
+/* Define a cor do fundo no modo escuro*/
+body.dark-mode {
+  background-color: #1d1d1d;
+  color: #fff;
+}
+
+body.dark-mode .navbar {
+  background-color: #202020 !important;
+}
+
+/* Define a cor do botão "Comprar Agora" no modo escuro*/
+body.dark-mode button {
+  background-color: #6221fe;
+}
+
+/* Define a cor da animação do botão no modo escuro*/
+body.dark-mode button:hover {
+  background-color: #d6d6d6;
+  transition: 0.5s ease;
+  color: #1d1d1d;
+}
+
+/* Define a cor dos links no modo escuro*/
+body.dark-mode .nav-link {
+  color: #918e8e;
+  transition: 0.5s ease;
+}
+
+/* Define a cor da animação dos links no modo escuro*/
+body.dark-mode .nav-link:hover {
+  color: #6221fe;
+}
+
+/* Estilo para cabeçalhos de nível 1 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Estilo para cabeçalhos de nível 2 */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+/* Estilo para cabeçalhos de nível 3 */
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Estilo para cabeçalhos de nível 4 */
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Estilo para cabeçalhos de nível 5 */
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Estilo para cabeçalhos de nível 6 */
+h6 {
+  color: #d8d8d8;
+}
+
+/* Estilo para o botão "Comprar Agora" */
+button {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #1d1d1d;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+/* Animação do botão "Comprar Agora" ao passar o mouse sobre ele */
+button:hover {
+  background-color: #6221fe;
+}
+
+/* Estilo para a barra de navegação */
+.navbar {
+  font-size: 16px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  top: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex; /* Usando Flexbox */
+  justify-content: space-between; /* Distribui os itens igualmente */
+  align-items: center; /* Alinha os itens verticalmente */
+  box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo para os ícones na barra de navegação */
+.navbar ion-icon {
+  font-size: 1.2rem;
+  padding: 0 0.7px;
+  transition: 0.4s ease;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 5px;
+  padding-top: 0.5rem;
+}
+
+/* Estilo para os links na barra de navegação */
+.nav-link {
+  position: relative;
+  color: #918e8e;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Pseudo-elemento para criar a linha sob os links na barra de navegação */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #6221fe;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s;
+}
+
+/* Animação para a linha sob os links na barra de navegação quando passa o mouse sobre eles */
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
+/* Estilo para os ícones na barra de navegação */
+.navbar ion-icon {
+  font-size: 1.2rem;
+  padding: 0 0.7px;
+  transition: 0.4s ease;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 5px;
+  padding-top: 0.5rem;
+}
+
+/* Animação para os ícones na barra de navegação quando passa o mouse sobre eles */
+.navbar ion-icon:hover {
+  color: #6221fe;
+}
+
+/* Pseudo-elemento para criar a linha sob os links na barra de navegação */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #6221fe;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s;
+}
+
+/* Animação para a linha sob os links na barra de navegação quando passa o mouse sobre eles */
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Estilo para a seção "home" */
+#home {
+  background-image: url("/KronosTech/assets/imgs/background.jpg");
+  width: 100%;
+  height: 33vh;
+  background-size: cover;
+  background-position-x: center;
+  /*background-position-y: 80px;*/
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+hr.custom-hr-index {
+  border: none; /* Remove a borda padrão */
+  height: 5px; /* Define a altura da linha */
+  width: 100%; /* Define a largura da linha */
+  background-color: #6221feFF; /* Define a cor da linha */
+  margin: 20px 0px; /* Define a margem superior e inferior da linha */
+  opacity: 100%;
+  border-radius: 100px;
+}
+
+hr.custom-hr-shop {
+  border: none; /* Remove a borda padrão */
+  height: 5px; /* Define a altura da linha */
+  width: 15%; /* Define a largura da linha */
+  background-color: #6221feFF; /* Define a cor da linha */
+  margin: 20px 0px; /* Define a margem superior e inferior da linha */
+  opacity: 100%;
+  border-radius: 100px;
+}
+
+hr.custom-hr-cart {
+  border: none; /* Remove a borda padrão */
+  height: 5px; /* Define a altura da linha */
+  width: 20%; /* Define a largura da linha */
+  background-color: #6221feFF; /* Define a cor da linha */
+  margin: 20px 0px; /* Define a margem superior e inferior da linha */
+  opacity: 100%;
+  border-radius: 100px;
+}
+
+/* Estilo para o texto dentro da seção "home" */
+#home span {
+  color: #6222fe;
+}
+
+/* Estilo para o botão "Comprar Agora" do CARD */
+.card button {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #1d1d1d;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+/* Animação do botão "Comprar Agora" do CARD ao passar o mouse sobre ele */
+.card button:hover {
+  background-color: #6221fe;
+}
+
+.row{
+  margin: 10px;
+}
+
+.row .img-fluid {
+  /*Alinhamento das imagens das marcas*/
+  width: 7%;
+  text-align: center;
+}
+
+.row {
+  justify-content: center;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  display: block;
+  --width-of-switch: 3.5em;
+  --height-of-switch: 2em;
+  /* size of sliding icon -- sun and moon */
+  --size-of-icon: 1.4em;
+  /* it is like a inline-padding of switch */
+  --slider-offset: 0.3em;
+  position: relative;
+  width: var(--width-of-switch);
+  height: var(--height-of-switch);
+
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e0e0e0;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--size-of-icon, 1.4em);
+  width: var(--size-of-icon, 1.4em);
+  border-radius: 20px;
+  left: var(--slider-offset, 0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #8983f7, #6221fe 70%);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+  background: #303136;
+  /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #6221fe;
+}
+
+.cards-produtos {
+  margin: 150px;
+  height: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 100px;
+}
+
+.cards {
+  perspective: 1000px;
+}
+
+.cardss {
+  width: 265px;
+  height: 400px;
+  background-size: 250px;
+  background: no-repeat;
+  border: 2px solid #474747;
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+
+.cardss:hover {
+  transform: translateZ(3px) rotateX(2deg) rotateY(2deg);
+  border: 2px solid #6221fe;
+  transition: 0.5s ease;
+}
+
+.card_title {
+  color: #fff;
+  position: absolute;
+  top: 80%;
+  right: 20px;
+  transform: translateY(-50%);
+  transition: transform 0.5s;
+  font: 700 1.5rem monospace;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+  font-family: "poppins";
+}
+
+.cards:hover .card_title {
+  transform: translateZ(50px);
+  text-shadow: -1px -1px 0 #6221fe, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  transition: 0.5s ease;
+}
+
+#card-one {
+  background: url(https://gtech.systems/wp-content/uploads/2020/02/3a-Copiar.png);
+  background-position: center;
+  background-size: 250px;
+}
+
+#card-two {
+  background: url(https://static.hardstore.com.br/static/20908/1280x960/2.jpg);
+  background-position: center;
+  background-size: 250px;
+}
+
+#card-tree {
+  background: url(https://m.media-amazon.com/images/I/71dWTOuPn+S._AC_SL1500_.jpg);
+  background-position: center;
+  background-size: 250px;
+}
+
+.custom-card {
+  overflow: hidden; /* Esconda o conteúdo que ultrapassar a altura definida */
+  cursor: pointer;
+  height: auto; /* Remova a altura fixa do card para que ele se ajuste dinamicamente ao conteúdo */
+  width: 100%;
+  border: none;
+}
+
+.p-name {
+  max-height: calc(1.2em * 3); /* Define a altura máxima para o texto (3 linhas) */
+  overflow: hidden; /* Oculta qualquer texto que ultrapasse a altura máxima */
+  text-overflow: ellipsis; /* Mostra uma elipse (...) quando o texto é cortado */
+  display: -webkit-box; /* Define o modelo de layout como caixa flexível para o WebKit (Safari) */
+  -webkit-line-clamp: 3; /* Limita o número de linhas exibidas */
+  -webkit-box-orient: vertical; /* Define a orientação da caixa flexível para vertical */
+  position: relative; /* Define a posição do elemento como relativa */
+}
+
+.p-name::after {
+  position: absolute; /* Define a posição do elemento pseudo como absoluta */
+  bottom: 0; /* Alinha as reticências ao final do elemento */
+  right: 0; /* Alinha as reticências à direita do elemento */
+  background: white; /* Garante que as reticências sejam exibidas em um fundo branco */
+}
+
+.p-price {
+  color: green;
+}
+
+.custom-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-card .card-body > * {
+  margin-bottom: 10px; /* Adiciona espaço entre os elementos */
+  flex-shrink: 0; /* Impede que os elementos dentro do corpo do card diminuam de tamanho */
+}
+
+.custom-card .card-img-top {
+  width: 100%; /* Ajusta a largura da imagem para ocupar todo o espaço disponível */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: contain; /* Para garantir que a imagem cubra completamente o espaço */
+  background-repeat: no-repeat;
+}
+
+.product {
+  padding: 0;
+}
+
+/* Ajuste o tamanho dos cards para diferentes tamanhos de tela */
+@media (max-width: 991px) {
+  .product {
+    flex: 0 0 33.33%; /* 3 cards por linha */
+    max-width: 33.33%;
+  }
+}
+
+@media (max-width: 767px) {
+  .product {
+    flex: 0 0 50%; /* 2 cards por linha */
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .product {
+    flex: 0 0 100%; /* 1 card por linha */
+    max-width: 100%;
+  }
+}
+
+
+
+#banner {
+  background-image: url("");
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: 80px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#banner h1 {
+  color: black;
+}
+
+#banner span {
+  color: #6221fe;
+}
+
+body.dark-mode #banner h1{
+  color: #fff;
+}
+
+footer {
+  background-color: #222222;
+}
+
+ul {
+  list-style-type: none;
+}
+
+footer h5 {
+  color: #a5a4a4;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+footer h6 {
+  color: #555;
+}
+
+.footer-one p {
+  color: #fff;
+}
+
+footer li {
+  padding-bottom: 2px;
+}
+
+footer li a {
+  font-size: 0.9rem;
+  color: #999;
+  text-decoration: none;
+}
+
+footer li a:hover {
+  color: #6222fe;
+}
+
+footer .copyright a {
+  color: black;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  display: inline-block;
+  text-align: center;
+  line-height: 44px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  margin: 0 5px;
+}
+
+footer .copyright a:hover {
+  color: white;
+  background: #6221fe;
+}
+
+footer p {
+  color: #fff;
+}
+
+footer .copyright img {
+  width: 25%;
+}
+
+#logo {
+  height: 55px;
+}
+
+/* CARRINHO */
+.cart table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart .product-info{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart th{
+  text-align: left;
+  padding: 5px 53px;
+  color: #fff;
+  background-color: #6221fe;
+}
+
+.cart td{
+  padding: 10px 20px;
+}
+
+.cart td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.cart td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+
+.carts td input {
+  height: 30px;
+  padding: 5px;
+}
+
+.order .order-detail-btn {
+  background-color: #6222fe;
+  color: #fff;
+
+  width: 80px;
+}
+
+.cart td a{
+  color: #6221fe;
+}
+
+.cart .remove-btn{
+  color: #6221fe;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: none;
+  border: none;
+  width: 100%;
+}
+
+body.dar-mode .cart .remove-btn{
+  color: #fff;
+}
+
+.cart .edit-btn{
+  color: #6221fe;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: none;
+  border: none;
+  width: 100%;
+}
+
+.cart .product-info p{
+  margin: 3px; /* margem do preço do produto ao nome */
+}
+
+.cart-total{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-total table {
+  width: 100%;
+  max-width: 500px;
+  border-top: 3px solid #6221fe;
+}
+
+td:last-child {
+  text-align: right; /* ajusta o preço a direita*/
+}
+
+th:last-child {
+  text-align: right; /*ajusta o preço a direita */
+}
+
+.checkout-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkout-btn{
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #1d1d1d;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #6222fe;
+  color: #fff;
+}
+
+body.dark-mode .checkout-btn {
+  background-color: #6222fe;
+}
+
+body.dark-mode .checkout-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-primary {
+  background-color: #6222fe;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #6222fe;
+  border: none;
+}
+
+/* CART */
+
+.nav-item a{
+  color: #000;
+}
+
+body.dark-mode .nav-item a{
+  color: #fff;
+}
+
+#MainImg {
+  max-width: 500px;
+  max-height: 500px;
+
+}
+
+.small-img-group {
+  padding-top: 25px;
+  width: 500px;
+}
+
+
+/* LOGIN */
+#login-form {
+  width: 50%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #6221fe;
+}
+
+#login-form input {
+  width: 50%;
+  margin: 5px auto;
+}
+
+#login-form #login-btn {
+  background-color: #6221fe;
+  color: #fff;
+}
+
+
+#login-form #register-url span {
+  color: #6221fe;
+}
+
+
+
+/* CRIAR CONTA */
+#register-form {
+  width: 50%;
+  margin: 5px auto;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #6221fe;
+}
+
+#register-form input {
+  width: 50%;
+  margin: 5px auto;
+}
+
+#register-form #register-btn {
+  background-color: #6221fe;
+  color: #fff;
+}
+
+
+/*CONTATO*/
+#contact span {
+  color: #6221fe;
+}
+
+
+/*MINHA CONTA*/
+#account-form {
+  width: 50%;
+  margin: 35px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+#account-form input {
+  margin: 5px auto;
+}
+
+#account-form #change-pass-btn {
+  color: #fff;
+  background-color: #6221fe;
+}
+
+
+/*CHEKOUT*/
+#checkout-form .checkout-small-element {
+  display: inline-block;
+  width: 48%;
+  margin: 10px auto;
+}
+
+#checkout-form .checkout-large-element {
+  width: 96.3%;
+}
+
+#checkout-form .checkout-btn-container {
+  margin: 10px;
+  text-align: right;
+  margin-right: 40px;
+}
+
+#checkout-form #checkout-btn {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #6222fe;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+#checkout-form #checkout-btn:hover {
+  background-color: #000;
+}
+
+body.dark-mode #checkout-form #checkout-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+
+
+.card.categ {
+  position: relative;
+  width: 200px;
+  height: 320px;
+  background: #f1f1f1;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+body.dark-mode .card.categ {
+  background-color: #242424;
+}
+
+.card.categ::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #6222fe;
+  transform: skewY(345deg);
+  transition: 0.5s;
+  -webkit-transition: 0.5s; /* Prefixo para WebKit */
+}
+
+.card.categ:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+  -webkit-transform: skewY(390deg); /* Prefixo para WebKit */
+}
+
+.card.categ::after {
+  content: "KRONOSTECH";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.05);
+}
+
+.card.categ .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+
+.card.categ .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.card.categ .contentBox h3 {
+  font-size: 19px;
+  color: #000;
+  font-weight: bold;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+body.dark-mode .card.categ .contentBox h3 {
+  color: #fff;
+}
+
+.card.categ .contentBox .price {
+  font-size: 24px;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card.categ .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #fff;
+  text-decoration: none;
+  background: #6222fe;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.card.categ:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.card-item {
+  height: 160px;
+  width: 167px;
+}
+
+.row-cards {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 19vw 95px;
+}
+
+.card.categ img:hover {
+  transform: scale(1.08);
+  transition: 0.5s ease;
+}
+
+.card.categ img {
+  filter: drop-shadow(8px 1px 10px #000);
+}
+
+.ad {
+  width: 100vw;
+}
+
+.butaobrita {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bbnavbar{
+  border-radius: 30px;
+  margin-right: 23px;
+}
+
+.form-check-input:checked {
+  background-color: #6221fe;
+  border-color: #6222fe;
+}
+
+
+.btn-secondary {
+  background-color: #ececec;
+  border: none;
+  color: #000;
+}
+
+body.dark-mode .btn-secondary {
+  background-color: #222222;
+  border: none;
+  color: #fff;
+}
+
+.cart-quantity {
+  background-color: #6221fe;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 50%;
+  margin: -5px;
+  font-size: 1rem;
+}

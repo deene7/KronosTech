@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <input type="checkbox" id="nav-toggle">
     <!--BARRRA LATERAL -->
     <div class="sidebar">
         <div class="sidebar-brand">
@@ -44,7 +46,7 @@
     <div class="main-content">
         <header>
                 <h2>
-                    <label for="">
+                    <label for="nav-toggle">
                         <span class="las la-bars"></span>
                     </label>
 
@@ -113,6 +115,7 @@
                         </div>
 
                         <div class="card-body">
+                            <div class="table-responsive">
                             <table width="100%">
                                 <thead>
                                     <tr>
@@ -125,17 +128,17 @@
                                     <tr>
                                         <td>UI/UX Design</td>
                                         <td>UI Team</td>
-                                        <td><span class="status"></span>Revisar</td>
+                                        <td><span class="status purple"></span>Revisar</td>
                                     </tr>
                                     <tr>
                                         <td>Desenvolvimento Web</td>
                                         <td>Frontend</td>
-                                        <td><span class="status"></span>Em progresso</td>
+                                        <td><span class="status pink"></span>Em progresso</td>
                                     </tr>
                                     <tr>
                                         <td>Kronos app</td>
                                         <td>Mobile Team</td>
-                                        <td><span class="status"></span>Pendente</td>
+                                        <td><span class="status orange"></span>Pendente</td>
                                     </tr>
                                     <td>UI/UX Design</td>
                                         <td>UI Team</td>
@@ -153,6 +156,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -168,14 +172,14 @@
 
                         <div class="card-body">
                             <div class="customer">
-                                <div>
+                                <div class="info">
                                 <img src="img 2.png" width="40px" height="40px">
                                     <div>
                                         <h4>Leão Cabecinha</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>
@@ -183,14 +187,14 @@
                             </div>
 
                             <div class="customer">
-                                <div>
+                                <div class="info">
                                 <img src="img 2.png" width="40px" height="40px">
                                     <div>
                                         <h4>Leão Cabecinha</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>
@@ -198,14 +202,14 @@
                             </div>
 
                             <div class="customer">
-                                <div>
+                                <div class="info">
                                 <img src="img 2.png" width="40px" height="40px">
                                     <div>
                                         <h4>Leão Cabecinha</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>
@@ -213,28 +217,29 @@
                             </div>
 
                             <div class="customer">
-                                <div>
+                                <div class="info">
                                 <img src="img 2.png" width="40px" height="40px">
                                     <div>
                                         <h4>Leão Cabecinha</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>
                                 </div>
                             </div>
+
                             <div class="customer">
-                                <div>
+                                <div class="info">
                                 <img src="img 2.png" width="40px" height="40px">
                                     <div>
                                         <h4>Leão Cabecinha</h4>
                                         <small>CEO Excerpt</small>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="contact">
                                     <span class="las la-user-circle"></span>
                                     <span class="las la-comment"></span>
                                     <span class="las la-phone"></span>

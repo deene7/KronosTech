@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/05/2024 às 21:25
+-- Tempo de geração: 31/05/2024 às 18:10
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `kronostech`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `admins`
+--
+
+CREATE TABLE `admins` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(250) NOT NULL,
+  `admin_email` text NOT NULL,
+  `admin_password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
+(1, 'Kronos', 'admin@gmail.com', '$2y$10$49bnifg1gj9ULsp2JO/T7eCOmwOKGZcpBca9fDy0d9Htdd1Ii.o8a');
 
 -- --------------------------------------------------------
 
@@ -43,7 +63,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_id`, `user_phone`, `user_city`, `user_address`, `order_date`) VALUES
-(68, 1155.00, 'Aguardando Pagamento', 10, 1234, 'ceilandia', 'qnn 20 conjunto c casa 40', '2024-05-22 16:00:01');
+(68, 1155.00, 'Aguardando Pagamento', 10, 1234, 'ceilandia', 'qnn 20 conjunto c casa 40', '2024-05-22 16:00:01'),
+(69, 899.00, 'Aguardando Pagamento', 11, 1, '1', '1', '2024-05-29 00:08:46');
 
 -- --------------------------------------------------------
 
@@ -68,7 +89,8 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`item_id`, `order_id`, `product_id`, `product_name`, `product_image`, `product_price`, `product_quantity`, `user_id`, `order_date`) VALUES
-(98, 68, '1', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AMD', 'new1.jpg', 1155.00, 1, 10, '2024-05-22 16:00:01');
+(98, 68, '1', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AMD', 'new1.jpg', 1155.00, 1, 10, '2024-05-22 16:00:01'),
+(99, 69, '3', 'Teclado Mecânico Gamer Razer Blackwidow V3', 'new3.webp', 899.00, 1, 11, '2024-05-29 00:08:46');
 
 -- --------------------------------------------------------
 
@@ -166,11 +188,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_phone`, `user_password`) VALUES
-(10, 'paulo', 'paulo@gmail.com', 1234, '$2y$10$zUNWcEDZ2zwJMD4Z09bOi.HGO2AiOSf0w1bjLZS.B6LzYYoqP2jba');
+(10, 'paulo', 'paulo@gmail.com', 1234, '$2y$10$zUNWcEDZ2zwJMD4Z09bOi.HGO2AiOSf0w1bjLZS.B6LzYYoqP2jba'),
+(11, '123456', '123456', 123456, '$2y$10$ADSlj9nSPyrDIi6YY/teGOeSVKpws/UriMTB9EbaoDhURDZw2IQ3q');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Índices de tabela `orders`
@@ -202,16 +231,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de tabela `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de tabela `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -223,7 +258,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

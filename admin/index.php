@@ -2,6 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Controle | KronosTech</title>
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
@@ -14,7 +15,7 @@
     <!--BARRRA LATERAL -->
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span> KronosTech</h2>
+            <h2><span class="lab la-accusoft"></span><span>KronosTech</span></h2>
         </div>
 
         <div class="sidebar-menu">

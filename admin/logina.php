@@ -51,21 +51,23 @@ if(isset($_POST['login_btn'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<section class="my-5 py-5">
+<section class="my-5 py-5 container-adm">
     <div class="container text-center mt-3 pt-5">
-        <h2 class="form-weight-bold">Login</h2>
+        <img src="assets/imgs/logomini.png" alt="logo" class="icon">
         <hr class="custom-hr-shop mx-auto">
+        <h2 class="form-weight-bold">Login</h2>        
     </div>
+
     <div class="mx-auto container">
         <form id="login-form" method="POST" action="logina.php">
           <p style="color:red" class="text-center"><?php if(isset($_GET['error'])) {echo $_GET['error'];}  ?></p>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" id="login-email" name="email" placeholder="Email" required/>
+                <input type="text" class="form-control" id="login-email" name="email" placeholder="Insira seu e-mail" required/>
             </div>
             <div class="form-group">
                 <label>Senha</label>
-                <input type="password" class="form-control" id="login-password" name="password" placeholder="Senha" required/>
+                <input type="password" class="form-control" id="login-password" name="password" placeholder="Insira sua senha" required/>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn" id="login-btn" name="login_btn" value="Login"/>

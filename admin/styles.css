@@ -13,6 +13,8 @@
   list-style-type: none;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -350,6 +352,15 @@ tr td:last-child {
     .sidebar:hover li a span:last-child {
       display: inline;
     }
+
+    .container-adm {
+      align-content: center;
+      text-align: center;
+      padding: 0;
+    
+      height: 100%;
+      width: 100%;
+    }
 }
 
 @media only screen and (max-width: 960px) {
@@ -360,6 +371,16 @@ tr td:last-child {
   .recent-grid {
     grid-template-columns: 60% 40%;
   }
+
+  .container-adm {
+    align-content: center;
+    text-align: center;
+    padding: 0px 10%;
+  
+    height: 75vh;
+    width: 100vw;
+  }
+  
 }
 
 @media only screen and (max-width: 768px) {
@@ -412,11 +433,86 @@ tr td:last-child {
     width: 100% !important;
     left: 0 !important;
   }
+
+  .container-adm {
+    align-content: center;
+    text-align: center;
+    padding: 0px 10%;
+  
+    height: 75vh;
+    width: 100vw;
+  }
 }
 
 @media only screen and (max-width: 560px) {
   .cards {
     grid-template-columns: 100%;
   }
+  
 }
 
+.container.text-center{
+  justify-content: center;
+}
+
+.container-adm {
+  align-content: center;
+  text-align: center;
+  padding: 0px 40%;
+
+  height: 75vh;
+  width: 100vw;
+}
+
+#login-form {
+  /* background-color: red; */
+
+  margin: 10px 0;
+}
+
+#login-form input {
+  width: 100%;
+  
+  margin: 8px 0px;
+  text-align: center;
+}
+
+#login-form .btn {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #1d1d1d;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+#login-form .btn:hover {
+  font-size: 0.8rem;
+  font-weight: 900;
+  outline: none;
+  border: none;
+  background-color: #6321fe;
+  color: aliceblue;
+  padding: 13px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+hr.custom-hr-shop {
+  background-color: #6321fe;
+  height: 4px;
+  border-radius: 30px;
+  margin: 15px 0px;
+  width: 100%;
+  justify-content: center;
+}
+
+.icon {
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.25));
+  margin: 30px 0 0;
+}

@@ -50,6 +50,10 @@
   .container #register-form input {
     width: 70%;
   }
+
+  .row-cards {
+    gap: 30px;
+  }
 }
 
 

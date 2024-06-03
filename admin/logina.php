@@ -1,46 +1,46 @@
 <?php
 session_start();
-
 include('../server/connection.php');
 
+// Verificar se o usuário já está logado e redirecionar para o painel de controle
 if(isset($_SESSION['admin_logged_in'])) {
-  header('location: dashboard.php');
-  exit;
+    header('location: dashboard.php');
+    exit;
 }
 
+// Verificar se o formulário foi enviado
 if(isset($_POST['login_btn'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  
-  $stmt = $conn->prepare("SELECT admin_id, admin_name, admin_email, admin_password FROM admins WHERE admin_email=? LIMIT 1");
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $stmt = $conn->prepare("SELECT admin_id, admin_name, admin_email, admin_password FROM admins WHERE admin_email=? LIMIT 1");
+    $stmt->bind_param('s', $email);
 
-  $stmt->bind_param('s', $email);
+    if($stmt->execute()) {
+        $stmt->bind_result($admin_id, $admin_name, $admin_email, $admin_password);
+        $stmt->fetch();
 
-  if($stmt->execute()) {
-    $stmt->bind_result($admin_id, $admin_name, $admin_email, $admin_password);
-    $stmt->fetch();
+        // Verificar se a senha está correta
+        if(password_verify($password, $admin_password)) {
+            $_SESSION['admin_id'] = $admin_id;
+            $_SESSION['admin_name'] = $admin_name;
+            $_SESSION['admin_email'] = $admin_email;
+            $_SESSION['admin_logged_in'] = true;
 
-    if(password_verify($password, $admin_password)) {
-      $_SESSION['admin_id'] = $admin_id;
-      $_SESSION['admin_name'] = $admin_name;
-      $_SESSION['admin_email'] = $admin_email;
-      $_SESSION['admin_logged_in'] = true;
-
-      header('location: dashboard.php?login_success=Você entrou na conta com sucesso');
-      exit();
+            header('location: dashboard.php?login_success=Você entrou na conta com sucesso');
+            exit();
+        } else {
+            // Senha incorreta
+            header('location: login.php?error=Senha ou email incorretos');
+            exit();
+        }
     } else {
-      header('location: login.php?error=Senha ou email incorretos');
-      exit();
+        // Erro genérico de banco de dados
+        header('location: login.php?error=Alguma coisa deu errado');
+        exit();
     }
-  } else {
-    header('location: login.php?error=Alguma coisa deu errado');
-    exit();
-  }
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +60,7 @@ if(isset($_POST['login_btn'])) {
 
     <div class="mx-auto container">
         <form id="login-form" method="POST" action="logina.php">
-          <p style="color:red" class="text-center"><?php if(isset($_GET['error'])) {echo $_GET['error'];}  ?></p>
+            <p style="color:red" class="text-center"><?php if(isset($_GET['error'])) {echo $_GET['error'];}  ?></p>
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control" id="login-email" name="email" placeholder="Insira seu e-mail" required/>

@@ -1,70 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Controle | KronosTech</title>
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+<?php include('header.php') ?>  
 
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <input type="checkbox" id="nav-toggle">
-    <!--BARRRA LATERAL -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span><span>KronosTech</span></h2>
-        </div>
-
-        <div class="sidebar-menu">
-            <ul>
-                <li>
-                    <a href="" class="active"><span class="las la-igloo"></span>
-                    <span>Painel de Controle</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-receipt"></span>
-                    <span>Pedidos</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
-                    <span>Produtos</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-users"></span>
-                    <span>Usuários</span></a>
-                </li>
-                <li>
-                    <a href=""><span class="las la-user-circle"></span>
-                    <span>Conta</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <!--CONTEUDO -->
-    <div class="main-content">
-        <header>
-                <h2>
-                    <label for="nav-toggle">
-                        <span class="las la-bars"></span>
-                    </label>
-
-                    Painel de Controle
-                </h2>
-
-
-                <div class="user-wrapper">
-                    <img src="img 2.png" width="40px" height="40px">
-                    <div>
-                        <h4>Admin</h4>
-                        <small>Adm. KronosTech</small>
-                    </div>
-                </div>
-        </header>  
-        
         <main>
             <div class="cards">
                 <div class="card-single">
@@ -248,6 +183,21 @@
                                 </div>
                             </div>
 
+                            <div class="customer">
+                                <div class="info">
+                                <img src="img 2.png" width="40px" height="40px">
+                                    <div>
+                                        <h4>Leão Cabecinha</h4>
+                                        <small>CEO Excerpt</small>
+                                    </div>
+                                </div>
+                                <div class="contact">
+                                    <span class="las la-user-circle"></span>
+                                    <span class="las la-comment"></span>
+                                    <span class="las la-phone"></span>
+                                </div>
+                            </div>
+
 
                         </div>
 
@@ -257,6 +207,8 @@
 
         </main>
     </div>
+
+    <?php include('sidebar.php') ?>
     
 </body>
 </html>

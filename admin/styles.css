@@ -308,6 +308,7 @@ tr td:last-child {
       width: 70px;
     }
     
+
     .sidebar .sidebar-brand,
     .sidebar li {
       padding-left: 0.5rem;
@@ -356,10 +357,17 @@ tr td:last-child {
     .container-adm {
       align-content: center;
       text-align: center;
-      padding: 0;
+      padding: 0px 20% !important;
     
       height: 100%;
       width: 100%;
+    }
+
+    #login-form input {
+      width: 100%;
+      
+      margin: 8px 0px;
+      text-align: center;
     }
 }
 
@@ -375,12 +383,12 @@ tr td:last-child {
   .container-adm {
     align-content: center;
     text-align: center;
-    padding: 0px 10%;
+    padding: 0px 10% !important;
   
     height: 75vh;
     width: 100vw;
   }
-  
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -400,7 +408,7 @@ tr td:last-child {
     display: flex;
     align-items: center;
   }
-
+  
   header h2 label {
     display: inline-block;
     background: var(--main-color);
@@ -437,18 +445,29 @@ tr td:last-child {
   .container-adm {
     align-content: center;
     text-align: center;
-    padding: 0px 10%;
+    padding: 0px 10% !important;
   
     height: 75vh;
     width: 100vw;
   }
+
+  #login-form input {
+    width: 100%;
+    height: 40px;
+    border: 1px #000 solid;
+    
+    margin: 9px 0px;
+    text-align: center;
+    background-color: ;
+  }
+
+  
 }
 
 @media only screen and (max-width: 560px) {
   .cards {
     grid-template-columns: 100%;
   }
-  
 }
 
 .container.text-center{

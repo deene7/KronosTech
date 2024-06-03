@@ -33,6 +33,23 @@
     height: auto;
     justify-items: center;
   }
+
+  .container #login-form {
+    width: 100%;
+  }
+
+  .container #login-form input {
+    width: 70%;
+    
+  }
+
+  .container #register-form {
+    width: 100%;
+  }
+
+  .container #register-form input {
+    width: 70%;
+  }
 }
 
 

@@ -18,7 +18,7 @@
 }
 
 .sidebar {
-  width: 345px;
+  width: 255px;
   position: fixed;
   left: 0;
   top: 0;
@@ -100,7 +100,7 @@
 
 .main-content {
   transition: margin-left 300ms;
-  margin-left: 345px;
+  margin-left: 255px;
 }
 
 header {
@@ -110,8 +110,8 @@ header {
   padding: 1rem 1.5rem;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   position: fixed;
-  left: 345px;
-  width: calc(100% - 345px);
+  left: 255px;
+  width: calc(100% - 255px);
   top: 0;
   z-index: 100;
   transition: left 300ms;
@@ -335,7 +335,7 @@ tr td:last-child {
     }
 
     .sidebar:hover{
-      width: 345px;
+      width: 255px;
       z-index: 200;
     }
     
@@ -455,10 +455,8 @@ tr td:last-child {
     width: 100%;
     height: 40px;
     border: 1px #000 solid;
-    
     margin: 9px 0px;
     text-align: center;
-    background-color: ;
   }
 
   

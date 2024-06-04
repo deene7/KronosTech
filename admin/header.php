@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 
+<?php include('../server/connection.php') ?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -14,8 +16,7 @@
     <!--Header -->
     <div class="main-content">
     <header>
-                <h2>
-                    <label for="nav-toggle">
+                <h2><label for="nav-toggle">
                         <span class="las la-bars"></span>
                     </label>
 

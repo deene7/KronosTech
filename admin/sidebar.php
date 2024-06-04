@@ -16,7 +16,7 @@
                     <span>Pedidos</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
+                    <a href="products.php"><span class="las la-clipboard-list"></span>
                     <span>Produtos</span></a>
                 </li>
                 <li>

@@ -27,7 +27,7 @@
                 <div class="user-wrapper">
                     <img src="img 2.png" width="40px" height="40px">
                     <div>
-                        <h4>Admin</h4>
+                        <h4><?php echo $_SESSION['admin_name']; ?></h4>
                         <small>Adm. KronosTech</small>
                     </div>
                 </div>

@@ -38,7 +38,7 @@ $orders = $stmt2->get_result();
         <div class="projects">
             <div class="card">
                 <div class="card-header">
-                    <h3>Pedidos Recentes</h3>
+                    <h3>Pedidos</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

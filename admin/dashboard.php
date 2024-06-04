@@ -1,8 +1,8 @@
 
 
 <?php include('header.php') ?>  
-
 <main>
+<h1>Bem vindo de volta, <?php echo $_SESSION['admin_name']; ?>!</h1>
     <div class="cards">
         <div class="card-single">
             <div>
@@ -42,33 +42,6 @@
         </div>
     </div>
 
-    
-    <div class="customers">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Novos Clientes</h3>
-                    <button>Ver Todos <span class="las la-arrow-right"></span></button>
-                </div>
-                <div class="card-body">
-                    <div class="customer">
-                        <div class="info">
-                            <img src="img 2.png" width="40px" height="40px">
-                            <div>
-                                <h4>Leão Cabecinha</h4>
-                                <small>CEO Excerpt</small>
-                            </div>
-                        </div>
-                        <div class="contact">
-                            <span class="las la-user-circle"></span>
-                            <span class="las la-comment"></span>
-                            <span class="las la-phone"></span>
-                        </div>
-                    </div>
-                    <!-- Outros clientes omitidos para brevidade -->
-                </div>
-            </div>
-        </div>
-    </div>
     
 </main>
 

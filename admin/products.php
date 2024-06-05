@@ -20,7 +20,7 @@ $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-$total_records_per_page = 5; // Alterado para 5 produtos por página
+$total_records_per_page = 4; // Alterado para 5 produtos por página
 $offset = ($page_no - 1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
@@ -38,7 +38,16 @@ $products = $stmt2->get_result();
         <div class="card">
             <div class="card-header">
                 <h3>Produtos</h3>
+
             </div>
+                            
+            <?php if(isset($_GET['edit_success_message'])) {?>
+                    <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
+                    <?php } ?>
+
+                    <?php if(isset($_GET['edit_failure_message'])) {?>
+                    <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
+                    <?php } ?>
             <div class="card-body">
                 <div class="table-responsive">
                     <table width="100%" class="orders-table">
@@ -49,16 +58,18 @@ $products = $stmt2->get_result();
                                 <td>Nome</td>
                                 <td>Valor</td>
                                 <td>Categoria</td>
+                                <td>Descrição</td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while($product = $products->fetch_assoc()) { ?>
                                 <tr>
-                                    <td><?php echo $product['product_id']; ?></td>
+                                    <td><strong><?php echo $product['product_id']; ?></strong></td>
                                     <td><img src="<?php echo "../assets/imgs/" . $product['product_image']; ?>" style="width: 70px; height: 70px;"/></td>
-                                    <td><?php echo $product['product_cname']; ?></td>
-                                    <td><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td>
+                                    <td><?php echo $product['product_name']; ?></td>
+                                    <td style="color: #6221fe;"><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td>
                                     <td><?php echo $product['product_category']; ?></td>
+                                    <td><?php echo $product['product_description']; ?></td>
                                     
 
                                     <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Editar</a></button></td>

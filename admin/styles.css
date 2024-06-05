@@ -13,6 +13,7 @@
   list-style-type: none;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
+
 }
 
 .sidebar {
@@ -528,14 +529,17 @@ hr.custom-hr-shop {
   justify-content: center;
   margin-top: 20px;
 }
+
 .pagination ul {
   list-style-type: none;
   padding: 0;
 }
+
 .pagination ul li {
   display: inline;
   margin: 0 5px;
 }
+
 .pagination ul li a {
   text-decoration: none;
   color: var(--main-color);
@@ -543,11 +547,30 @@ hr.custom-hr-shop {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
+
 .pagination ul li a:hover {
   background-color: #ddd;
 }
+
 .pagination ul li a.active {
   background-color: var(--main-color);
   color: white;
   border: 1px solid var(--main-color);
+}
+
+.input-large {
+  width: 100%; /* Ajuste conforme necessário */
+  height: 40px; /* Ajuste conforme necessário */
+  padding: 20px;
+  font-size: 1rem;
+  color: var(--main-color);
+}
+
+.input-large-textarea {
+  width: 100%;
+  height: 230px; /* Altura ajustável conforme necessário */
+  padding: 10px;
+  font-size: 1rem;
+  resize: vertical; /* Permite redimensionar verticalmente */
+  color: var(--main-color);
 }

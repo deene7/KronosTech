@@ -12,16 +12,16 @@
                     <span>Painel de Controle</span></a>
                 </li>
                 <li>
-                    <a href="orders.php"><span class="las la-receipt"></span>
-                    <span>Pedidos</span></a>
-                </li>
-                <li>
                     <a href="products.php"><span class="las la-clipboard-list"></span>
                     <span>Produtos</span></a>
                 </li>
                 <li>
                     <a href=""><span class="las la-list"></span>
                     <span>Adicionar Produtos</span></a>
+                </li>
+                <li>
+                    <a href="orders.php"><span class="las la-receipt"></span>
+                    <span>Pedidos</span></a>
                 </li>
                 <li>
                     <a href=""><span class="las la-users"></span>

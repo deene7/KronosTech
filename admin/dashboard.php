@@ -1,6 +1,5 @@
 
 <?php include('header.php'); ?>  
-<?php include('sidebar.php'); ?>
 
 <main>
     <h1>Bem vindo de volta, <?php echo $_SESSION['admin_name']; ?>!</h1>

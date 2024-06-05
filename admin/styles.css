@@ -24,7 +24,7 @@
   height: 100%;
   background: var(--main-color);
   z-index: 100%;
-  transition: margin-left 300ms;
+  transition: width 300ms;
 }
 
 .sidebar-brand {
@@ -73,6 +73,20 @@
 }
 
 #nav-toggle:checked + .sidebar .sidebar-brand,
+#nav-toggle :checked + .sidebar li {
+  padding-left: 1rem;
+  text-align: center;
+}
+
+#nav-toggle :checked + .sidebar li a{
+  padding-left: 0rem;
+}
+
+#nav-toggle :checked + .sidebar li a span{
+  padding-left: 0rem;
+}
+
+#nav-toggle:checked + .sidebar .sidebar-brand,
 #nav-toggle:checked + .sidebar li {
   padding-left: 0.5rem;
   text-align: center;
@@ -88,18 +102,19 @@
   display: none;
 }
 
-#nav-toggle:checked ~ .main-content{
+#nav-toggle:checked ~ .main-content {
   margin-left: 70px;
 }
 
-#nav-toggle:checked ~ .main-content header{
-  width: calc(100% - 70px);
-  left: 70px;
-}
 
 .main-content {
   transition: margin-left 300ms;
   margin-left: 255px;
+}
+
+#nav-toggle:checked ~ .main-content header {
+  width: calc(100% - 70px);
+  left: 70px;
 }
 
 header {
@@ -107,7 +122,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.13);
   position: fixed;
   left: 255px;
   width: calc(100% - 255px);
@@ -147,7 +162,7 @@ header label span {
 main {
   margin-top: 85px;
   padding: 2rem 1.5rem;
-  background: #f1f5f9;
+  background: #ffffff;
   min-height: calc(100vh - 90px);
 }
 
@@ -161,9 +176,9 @@ main {
 .card-single {
   display: flex;
   justify-content: space-between;
-  background: #fff;
+  background: #f3f3f3;
   padding: 2rem;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .card-single div:last-child span {
@@ -204,6 +219,8 @@ main {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #f0f0f0;
+  
+  font-weight: bold;
 }
 
 .card-header button {
@@ -220,8 +237,8 @@ table {
 }
 
 thead tr {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border-top: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3)
 }
 
 .orders-table td {
@@ -294,55 +311,48 @@ tr td:last-child {
 }
 
 @media only screen and (max-width: 1200px) {
-    .sidebar {
-      width: 70px;
-    }
+  .sidebar {
+    width: 70px;
+  }
+  
+  .sidebar .sidebar-brand,
+  .sidebar li {
+    padding-left: 1rem;
+    text-align: center;
+  }
+  
+  .sidebar li a{
+    padding-left: 0rem;
+  }
+  
+  .sidebar li a span{
+    padding-left: 0rem;
+  }
+  
+  .sidebar .sidebar-brand,
+  .sidebar li {
+    padding-left: 0.5rem;
+    text-align: center;
+  }
+  
+  .sidebar .sidebar-brand,
+  .sidebar li a {
+    padding-left: 1rem;
+  }
+  
+  .sidebar .sidebar-brand h2 span:last-child,
+  .sidebar li a span:last-child {
+    display: none;
+  }
+  
+  .main-content {
+    margin-left: 70px;
+  }
     
-
-    .sidebar .sidebar-brand,
-    .sidebar li {
-      padding-left: 0.5rem;
-      text-align: center;
-    }
-    
-    .sidebar .sidebar-brand,
-    .sidebar li a {
-      padding-left: 1rem;
-    }
-    
-    .sidebar .sidebar-brand h2 span:last-child,
-    .sidebar li a span:last-child {
-      display: none;
-    }
-    
-    .main-content{
-      margin-left: 70px;
-    }
-    
-    .main-content header{
-      width: calc(100% - 70px);
-      left: 70px;
-    }
-
-    .sidebar:hover{
-      width: 255px;
-      z-index: 200;
-    }
-    
-    .sidebar:hover .sidebar-brand,
-    .sidebar:hover li {
-      padding-left: 2rem;
-      text-align: left;
-    }
-    
-    .sidebar:hover li a {
-      padding-left: 1rem;
-    }
-    
-    .sidebar:hover .sidebar-brand h2 span:last-child,
-    .sidebar:hover li a span:last-child {
-      display: inline;
-    }
+  .main-content header {
+    width: calc(100% - 70px);
+    left: 70px;
+  }
 
     .container-adm {
       align-content: center;
@@ -430,6 +440,27 @@ tr td:last-child {
   header {
     width: 100% !important;
     left: 0 !important;
+  }
+
+  #nav-toggle:checked + .sidebar {
+    left: 0 !important;
+    z-index: 100;
+    width: 345px;
+  }
+
+  #nav-toggle:checked + .sidebar .sidebar-brand,
+  #nav-toggle:checked + .sidebar li {
+    padding-left: 2rem;
+    text-align: left;
+  }
+
+  #nav-toggle:checked + .sidebar li a {
+    padding-left: 1rem;
+  }
+
+  #nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
+  #nav-toggle:checked + .sidebar li a span:last-child {
+    display: inline;
   }
 
   .container-adm {
@@ -573,4 +604,23 @@ hr.custom-hr-shop {
   font-size: 1rem;
   resize: vertical; /* Permite redimensionar verticalmente */
   color: var(--main-color);
+}
+
+.btn {
+  background-color: #6321fe;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+
+  font-weight: bold;
+  transition: 0.4s ease;
+}
+
+.btn:hover {
+  background-color: #000;
+}
+
+button {
+  border: none;
 }

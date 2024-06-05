@@ -1,8 +1,9 @@
 
+<?php include('header.php'); ?>  
+<?php include('sidebar.php'); ?>
 
-<?php include('header.php') ?>  
 <main>
-<h1>Bem vindo de volta, <?php echo $_SESSION['admin_name']; ?>!</h1>
+    <h1>Bem vindo de volta, <?php echo $_SESSION['admin_name']; ?>!</h1>
     <div class="cards">
         <div class="card-single">
             <div>
@@ -41,11 +42,8 @@
             </div>
         </div>
     </div>
-
-    
 </main>
-
-<?php include('sidebar.php') ?>
 </div>
 </body>
 </html>
+

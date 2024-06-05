@@ -40,14 +40,26 @@ $products = $stmt2->get_result();
                 <h3>Produtos</h3>
 
             </div>
-                            
+                          
+            
             <?php if(isset($_GET['edit_success_message'])) {?>
-                    <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
-                    <?php } ?>
+            <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
+            <?php } ?>
 
-                    <?php if(isset($_GET['edit_failure_message'])) {?>
-                    <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
-                    <?php } ?>
+            <?php if(isset($_GET['edit_failure_message'])) {?>
+            <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
+            <?php } ?>
+
+
+            <?php if(isset($_GET['deleted_failure'])) {?>
+            <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
+            <?php } ?>
+
+            <?php if(isset($_GET['deleted_successfully'])) {?>
+            <p class="text-center" style="color: green;"><?php echo $_GET['deleted_successfully'] ?></p>
+            <?php } ?>
+
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table width="100%" class="orders-table">
@@ -73,7 +85,7 @@ $products = $stmt2->get_result();
                                     
 
                                     <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Editar</a></button></td>
-                                    <td><button><a class="btn btn-primary">Excluir</a></button></td>
+                                    <td><button><a class="btn btn-primary" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Excluir</a></button></td>
                                     <td><hidden button></button></td>
                                 </tr>
                             <?php } ?>
@@ -108,6 +120,5 @@ $products = $stmt2->get_result();
     </div>
 </div>
 
-<?php include('sidebar.php'); ?>
 </body>
 </html>

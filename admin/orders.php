@@ -47,11 +47,11 @@ $orders = $stmt2->get_result();
                                 <tr>
                                     <td>Id</td>
                                     <td>Status</td>
-                                    <td>Id do Usuário</td>
+                                    <td>Id do Cliente</td>
                                     <td>Data do Pedido</td>
                                     <td>Telefone</td>
-                                    <td>Endereço</td>
-
+                                    <td>Cidade</td>
+                                    <td>Detalhes</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,11 +60,11 @@ $orders = $stmt2->get_result();
                                         <td><?php echo $order['order_id']; ?></td>
                                         <td><?php echo $order['order_status']; ?></td>
                                         <td><?php echo $order['user_id']; ?></td>
-                                        <td><?php echo $order['order_date']; ?></td>
+                                        <td><?php echo date('d/m/Y H:i:s', strtotime($order['order_date']));?></td>
                                         <td><?php echo $order['user_phone']; ?></td>
-                                        <td><?php echo $order['user_address']; ?></td>
+                                        <td><?php echo $order['user_city']; ?></td>
 
-                                        <td><button><a class="btn btn-primary">Editar</a></button></td>
+                                        <td><button><a class="btn btn-primary" href="view_order.php?order_id=<?php echo $order['order_id']; ?>">Detalhes</a></button></td>
                                         <td><button><a class="btn btn-danger">Excluir</a></button></td>
                                     </tr>
                                 <?php } ?>
@@ -80,6 +80,5 @@ $orders = $stmt2->get_result();
 
 
 
-<?php include('sidebar.php') ?>   
 </body>
 </html>

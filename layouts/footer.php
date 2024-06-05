@@ -38,16 +38,13 @@
 
       <div class="copyright mt-5">
         <div class="row container justify-content-start mx-auto">
+
           <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-            <img src="assets/imgs/pagas.png" /> 
+            <!--<img src="assets/imgs/pagas.png" /> -->
           </div>
+
           <div class="col-lg-5 col-md-5 col-sm-12 mb-4 text-nowrap mb-2">
           <p>eCommerce @2024 Todos os Direitos Reservados</p>
-          </div>
-          <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-            <a href=""><ion-icon name="logo-facebook"></ion-icon></a>
-            <a href=""><ion-icon name="logo-instagram"></ion-icon></a>
-            <a href=""><ion-icon name="logo-twitter"></ion-icon></a>
           </div>
         </div>
       </div>

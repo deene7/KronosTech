@@ -61,7 +61,6 @@ if (isset($_GET['product_id'])) {
     </div>
 </div>
 
-<?php include('sidebar.php'); ?>
 
 </body>
 </html>

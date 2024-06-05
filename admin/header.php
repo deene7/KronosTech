@@ -22,14 +22,14 @@
             <ul>
                 <li>
                     <a href="dashboard.php" class="active"><span class="las la-igloo"></span>
-                    <span>Painel de Controle</span></a>
+                    <span>Página Inicial</span></a>
                 </li>
                 <li>
                     <a href="products.php"><span class="las la-clipboard-list"></span>
                     <span>Produtos</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-list"></span>
+                    <a href="add_product.php"><span class="las la-list"></span>
                     <span>Adicionar Produtos</span></a>
                 </li>
                 <li>

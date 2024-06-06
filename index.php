@@ -125,13 +125,16 @@ if(isset($_SESSION['logged_in'])) {
         <a href="shop.php?category=cadeira" class="buy">Ver Mais</a>
       </div>
     </div>
+    </div>  <!-- CARDS CATEGORIA -->
+   
+
+    <br>
+    <div class="container text-center mt-5 py-5">
+      <h3>Produtos</h3>
+      <hr class="custom-hr-index">
+      <p>Produtos em destaque</p>
     </div>
-
-
-
-
-
-    
+     
 <!--CARDS PRODUTOS -->
 <div class="row">
         <?php include('server/get_products.php'); ?>

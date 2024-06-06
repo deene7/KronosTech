@@ -37,11 +37,11 @@
                     <span>Pedidos</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-users"></span>
+                    <a href="#"><span class="las la-users"></span>
                     <span>Usuários</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-user-circle"></span>
+                    <a href="#"><span class="las la-user-circle"></span>
                     <span>Conta</span></a>
                 </li>
                 <li>
@@ -68,3 +68,5 @@
                 </div>
             </div>
         </header>
+
+        <script src="assets/js/script.js"></script>

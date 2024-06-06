@@ -53,7 +53,7 @@ if(isset($_SESSION['logged_in'])) {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="produto1.php?product_id=17">
+      <a href="shop.php?category=placa de vídeo">
         <img src="assets/imgs/ad.png" class="d-block w-100" alt="ad">
       </a>
     </div>

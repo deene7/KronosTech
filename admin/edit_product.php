@@ -49,9 +49,9 @@ if (isset($_GET['product_id'])) {
                 <form method="post" action="edit_product.php">
                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
 
-                    <h4>Nome:</h4> <input type="text" name="name" class="input-large" value="<?php echo $product['product_name']; ?>" placeholder="Nome do Produto"> <br><br>
-                    <h4>Descrição:</h4> <textarea name="description" class="input-large-textarea" placeholder="Descrição do Produto"><?php echo $product['product_description']; ?></textarea> <br><br>
-                    <h4>Valor (R$):</h4> <input type="text" id="preco" name="price" class="input-large" value="<?php echo $product['product_price']; ?>" placeholder="Valor do Produto" maxlength="7"> <br><br>
+                    <h4>Nome:</h4> <input type="text" name="name" class="input-large" value="<?php echo $product['product_name']; ?>" placeholder="Nome do Produto">
+                    <h4>Descrição:</h4> <textarea name="description" class="input-large-textarea" placeholder="Descrição do Produto"><?php echo $product['product_description']; ?></textarea>
+                    <h4>Valor (R$):</h4> <input type="text" id="preco" name="price" class="input-large" value="<?php echo $product['product_price']; ?>" placeholder="Valor do Produto" maxlength="7">
                     <h4>Categoria:</h4> <input type="text" name="category" class="input-large" value="<?php echo $product['product_category']; ?>" placeholder="Categoria do Produto"> <br><br>
                     <input type="submit" class="btn btn-primary" name="edit_btn" value="Editar">
                     

@@ -50,6 +50,15 @@ $products = $stmt2->get_result();
             <p class="text-center" style="color: red;"><?php echo $_GET['product_failed'] ?></p>
             <?php } ?>
             
+            <!--MENSAGENS AO ALTERAR IMAGEM -->
+            <?php if(isset($_GET['images_updated'])) {?>
+            <p class="text-center" style="color: green;"><?php echo $_GET['images_updated'] ?></p>
+            <?php } ?>
+
+            <?php if(isset($_GET['images_failed'])) {?>
+            <p class="text-center" style="color: red;"><?php echo $_GET['images_failed'] ?></p>
+            <?php } ?>
+
             
             <!--MENSAGENS AO EDITAR PRODUTO -->
             <?php if(isset($_GET['edit_success_message'])) {?>
@@ -82,6 +91,8 @@ $products = $stmt2->get_result();
                                 <td>Valor</td>
                                 <td>Categoria</td>
                                 <td>Descrição</td>
+                                <td>Editar</td>
+                                <td>Editar</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,8 +105,8 @@ $products = $stmt2->get_result();
                                     <td><?php echo $product['product_category']; ?></td>
                                     <td><?php echo $product['product_description']; ?></td>
                                     
-
-                                    <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Editar</a></button></td>
+                                    <td><button><a class="btn btn-primary" href="edit_images.php?product_id=<?php echo $product['product_id']; ?>&product_name=<?php echo $product['product_name']; ?>">Imagens</a></button></td>
+                                    <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Detalhes</a></button></td>
                                     <td><button><a class="btn btn-primary" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Excluir</a></button></td>
                                     <td><hidden button></button></td>
                                 </tr>

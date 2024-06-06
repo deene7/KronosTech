@@ -594,7 +594,14 @@ hr.custom-hr-shop {
   height: 40px; /* Ajuste conforme necessário */
   padding: 20px;
   font-size: 1rem;
-  color: var(--main-color);
+  color: var(--color-dark);
+}
+
+select.input-large {
+  appearance: none; /* Para remover estilos padrões do select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
 }
 
 .input-large-textarea {
@@ -603,7 +610,7 @@ hr.custom-hr-shop {
   padding: 10px;
   font-size: 1rem;
   resize: vertical; /* Permite redimensionar verticalmente */
-  color: var(--main-color);
+  color: var(--color-dark);
 }
 
 .btn {

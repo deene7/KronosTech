@@ -40,8 +40,18 @@ $products = $stmt2->get_result();
                 <h3>Produtos</h3>
 
             </div>
-                          
+
+            <!--MENSAGENS AO CRIAR PRODUTO -->
+            <?php if(isset($_GET['product_created'])) {?>
+            <p class="text-center" style="color: green;"><?php echo $_GET['product_created'] ?></p>
+            <?php } ?>
+
+            <?php if(isset($_GET['product_failed'])) {?>
+            <p class="text-center" style="color: red;"><?php echo $_GET['product_failed'] ?></p>
+            <?php } ?>
             
+            
+            <!--MENSAGENS AO EDITAR PRODUTO -->
             <?php if(isset($_GET['edit_success_message'])) {?>
             <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
             <?php } ?>
@@ -51,12 +61,13 @@ $products = $stmt2->get_result();
             <?php } ?>
 
 
-            <?php if(isset($_GET['deleted_failure'])) {?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
-            <?php } ?>
-
+            <!--MENSAGENS AO DELETAR PRODUTO -->
             <?php if(isset($_GET['deleted_successfully'])) {?>
             <p class="text-center" style="color: green;"><?php echo $_GET['deleted_successfully'] ?></p>
+            <?php } ?>
+
+            <?php if(isset($_GET['deleted_failure'])) {?>
+            <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
             <?php } ?>
 
 

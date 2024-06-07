@@ -52,31 +52,31 @@ $products = $stmt2->get_result();
             
             <!--MENSAGENS AO ALTERAR IMAGEM -->
             <?php if(isset($_GET['images_updated'])) {?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['images_updated'] ?></p>
+            <p class="text-center" style="color: green; text-align: center; font-weight: bold;"><?php echo $_GET['images_updated'] ?></p>
             <?php } ?>
 
             <?php if(isset($_GET['images_failed'])) {?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['images_failed'] ?></p>
+            <p class="text-center" style="color: red; text-align: center; font-weight: bold;"><?php echo $_GET['images_failed'] ?></p>
             <?php } ?>
 
             
             <!--MENSAGENS AO EDITAR PRODUTO -->
             <?php if(isset($_GET['edit_success_message'])) {?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['edit_success_message'] ?></p>
+            <p class="text-center" style="color: green; text-align: center; font-weight: bold;"><?php echo $_GET['edit_success_message'] ?></p>
             <?php } ?>
 
             <?php if(isset($_GET['edit_failure_message'])) {?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['edit_failure_message'] ?></p>
+            <p class="text-center" style="color: red; text-align: center; font-weight: bold;"><?php echo $_GET['edit_failure_message'] ?></p>
             <?php } ?>
 
 
             <!--MENSAGENS AO DELETAR PRODUTO -->
             <?php if(isset($_GET['deleted_successfully'])) {?>
-            <p class="text-center" style="color: green;"><?php echo $_GET['deleted_successfully'] ?></p>
+            <p class="text-center" style="color: green; text-align: center; font-weight: bold;"><?php echo $_GET['deleted_successfully'] ?></p>
             <?php } ?>
 
             <?php if(isset($_GET['deleted_failure'])) {?>
-            <p class="text-center" style="color: red;"><?php echo $_GET['deleted_failure'] ?></p>
+            <p class="text-center" style="color: red; text-align: center; font-weight: bold;"><?php echo $_GET['deleted_failure'] ?></p>
             <?php } ?>
 
 

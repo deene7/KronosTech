@@ -30,7 +30,7 @@ if (isset($_GET['product_id'])) {
     if ($stmt->execute()) {
         $stmt->close();  // Fechar o statement após a execução
         $conn->close();  // Fechar a conexão após a execução
-        header('location: products.php?edit_success_message=Você editou o produto com sucesso!');
+        header('location: products.php?edit_success_message= Você editou o produto com sucesso!');
         exit;
     } else {
         $stmt->close();  // Fechar o statement após a execução

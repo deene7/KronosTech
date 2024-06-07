@@ -39,6 +39,7 @@ if(isset($_GET['product_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/imgs/logomini.png" type="image/x-icon">
 
     <style>
       .small-img-group {
@@ -112,6 +113,7 @@ if(isset($_SESSION['logged_in'])) {
 <?php include('layouts/navbar.php'); ?>
 
 <section class="container sproduct my-5 pt-5">
+  <br>
   <div class="row mt-4">
     <?php do { ?>
 
@@ -140,18 +142,32 @@ if(isset($_SESSION['logged_in'])) {
       <br>
       <h6><a href="shop.php" class="hovert">Loja</a> / <a href="shop.php?category=<?php echo urlencode($row['product_category']); ?>" class="hovert"><?php echo $row['product_category']; ?></a></h6>
       <h4><?php echo $row['product_name']; ?></h4>
-      <h2 style="color: #6221fe;">R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?></h2>
+      <!-- PREÇO DO PRODUTO -->
+      <?php if ($product_quant >= 1 && $product_quant > 0): ?> <!-- verifica a quantidade de produtos -->
+          <h2 style="color: #6221fe;"> <!-- Define a cor da fonte se houver produto -->
+              R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?> 
+          </h2>
+      <?php else: ?>
+          <h2 style="color: #d4d4d4; opacity: 0.8;"> <!-- Define a cor da fonte se NÃO houver produto -->
+              R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?>
+          </h2>
+      <?php endif; ?>
+
+      <!-- ANTIGO PREÇO -->
+             <!-- <h2 style="color: #6221fe;">R$ <?php echo number_format($row['product_price'], 2, ',', '.'); ?></h2> --
+      <!-- ANTIGO PREÇO -->
+
       <form method="POST" action="cart.php">
         <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
         <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>">
         <input type="hidden" name="product_name" value="<?php echo $row['product_cname']; ?>">
         <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
-      <input type="number" name="product_quantity" value="1" min="1">
+        <input type="hidden" name="product_quantity" value="1" min="1">
       <?php if ($product_quant >= 1 && $product_quant > 0){echo "<button class='buy-button' type='submit' name='add_to_cart'>Adicionar ao Carrinho</button>";} else {echo "<button class='buy-button disabled' type='submit' name='add_to_cart' disabled>Produto Indisponível</button>";}?>
     </form>
 
       <h4 class="mt-5">Detalhes do Produto</h4>
-      <?php if($product_quant >= 1 && $product_quant > 0){echo "<h4 class='estoque-true'>Em Estoque<h4>";}else {echo "<h4 class='estoque-false'>Sem estoque<h4>";} $product_quant; ?>
+      <?php if($product_quant >= 1 && $product_quant > 0){echo "<h4 class='estoque-true'>EM ESTOQUE<h4>";}else {echo "<h4 class='estoque-false'>SEM ESTOQUE<h4>";} $product_quant; ?>
       <h6>Características</h6>
       <span><?php echo $row['product_description']; ?></span>
     </div>

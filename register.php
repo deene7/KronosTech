@@ -14,17 +14,18 @@ if(isset($_POST['register'])) {
   $phone = $_POST['phone'];
   $password = $_POST['password'];
   $confirmPassword = $_POST['confirmPassword'];
+  $cpf = $_POST['cpf']; // Assuming you have a CPF field
 
   // Se as senhas não coincidem
   if($password !== $confirmPassword) {
     header('location: register.php?error=As senhas não coincidem');
-    exit(); // Adiciona exit para interromper a execução adicional
+    exit();
   }
 
   // Se a senha tem menos de 6 caracteres
   if(strlen($password) < 6) {
     header('location: register.php?error=A senha tem que ter pelo menos 6 caracteres');
-    exit(); // Adiciona exit para interromper a execução adicional
+    exit();
   }
 
   // Verifica se o email já existe
@@ -33,21 +34,32 @@ if(isset($_POST['register'])) {
   $stmt->execute();
   $stmt->bind_result($num_rows);
   $stmt->fetch();
-
-  // Fecha o conjunto de resultados antes de preparar a nova consulta
   $stmt->close();
 
   if($num_rows != 0) {
     header('location: register.php?error=Já existe um usuário com este email');
-    exit(); // Adiciona exit para interromper a execução adicional
+    exit();
+  }
+
+  // Verifica se o CPF já existe
+  $stmt = $conn->prepare("SELECT count(*) FROM users WHERE user_cpf=?");
+  $stmt->bind_param('s', $cpf);
+  $stmt->execute();
+  $stmt->bind_result($num_rows);
+  $stmt->fetch();
+  $stmt->close();
+
+  if($num_rows != 0) {
+    header('location: register.php?error=Já existe um usuário com este CPF');
+    exit();
   }
 
   // Hash da senha
   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
   // Insere um novo usuário
-  $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_phone, user_password) VALUES (?, ?, ?, ?)");
-  $stmt->bind_param('ssss', $name, $email, $phone, $hashed_password);
+  $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_phone, user_password, user_cpf) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssss', $name, $email, $phone, $hashed_password, $cpf);
 
   if($stmt->execute()) {
     $user_id = $stmt->insert_id;
@@ -56,17 +68,13 @@ if(isset($_POST['register'])) {
     $_SESSION['user_name'] = $name;
     $_SESSION['logged_in'] = true;
     header('location: account.php?register_success=Você criou a conta com sucesso');
-    exit(); // Adiciona exit para interromper a execução adicional
+    exit();
   } else {
     header('location: register.php?register_error=Não foi possível criar a conta');
-    exit(); // Adiciona exit para interromper a execução adicional
+    exit();
   }
 }
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -74,18 +82,16 @@ if(isset($_POST['register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Conta | KronosTech</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-
-        <!--CSS-->
-        <style>
-          #marca img {
-            max-width: 11%;
-            height: auto;
+    <link rel="icon" href="assets/imgs/logomini.ico" type="image/x-icon">
+    <style>
+        input {
+            padding: 10px;
+            font-size: 16px;
         }
-        </style>
-
+    </style>
 </head>
 <body>
 
@@ -133,7 +139,6 @@ if(isset($_POST['register'])) {
   </div>
 </nav>
 
-
 <!--CRIAR CONTA-->
 <section class="my-5 py-5">
     <div class="container text-center mt-3 pt-5">
@@ -148,12 +153,16 @@ if(isset($_POST['register'])) {
                 <input type="text" class="form-control" id="register-name" name="name" placeholder="Nome" required/>
             </div>
             <div class="form-group">
+                <label>CPF</label>
+                <input type="text" class="form-control" id="register-cpf" name="cpf" placeholder="CPF" maxlength="14" required/>
+            </div>
+            <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" id="register-email" name="email" placeholder="Email" required/>
+                <input type="email" class="form-control" id="register-email" name="email" placeholder="Email" required/>
             </div>
             <div class="form-group">
                 <label>Celular</label>
-                <input type="number" class="form-control" id="register-phone" name="phone" placeholder="Celular" required/>
+                <input type="text" class="form-control" id="register-phone" name="phone" placeholder="(XX) X XXXX-XXXX" maxlength="16" required/>
             </div>
             <div class="form-group">
                 <label>Senha</label>
@@ -173,5 +182,52 @@ if(isset($_POST['register'])) {
     </div>
 </section>
 
+<script>
+    function mascaraCelular(event) {
+        var input = event.target;
+        var value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        var formattedValue = '';
+
+        if (value.length > 0) {
+            formattedValue += '(' + value.substring(0, 2);
+        }
+        if (value.length > 2) {
+            formattedValue += ') ' + value.substring(2, 3);
+        }
+        if (value.length > 3) {
+            formattedValue += ' ' + value.substring(3, 7);
+        }
+        if (value.length > 7) {
+            formattedValue += '-' + value.substring(7, 11);
+        }
+
+        input.value = formattedValue;
+    }
+
+    function mascaraCPF(event) {
+        var input = event.target;
+        var value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+        var formattedValue = '';
+
+        if (value.length > 0) {
+            formattedValue += value.substring(0, 3);
+        }
+        if (value.length > 3) {
+            formattedValue += '.' + value.substring(3, 6);
+        }
+        if (value.length > 6) {
+            formattedValue += '.' + value.substring(6, 9);
+        }
+        if (value.length > 9) {
+            formattedValue += '-' + value.substring(9, 11);
+        }
+
+        input.value = formattedValue;
+    }
+
+    document.getElementById('register-phone').addEventListener('input', mascaraCelular);
+    document.getElementById('register-cpf').addEventListener('input', mascaraCPF);
+</script>
 
 <?php include('layouts/footer.php'); ?>
+

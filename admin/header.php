@@ -9,6 +9,7 @@
     <title>Painel de Controle | KronosTech</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../assets/imgs/logomini.ico" type="image/x-icon">
 </head>
 <body>
     <input type="checkbox" id="nav-toggle" style="display: none;">
@@ -37,8 +38,12 @@
                     <span>Pedidos</span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="las la-users"></span>
-                    <span>Usuários</span></a>
+                    <a href="clientes.php"><span class="las la-users"></span>
+                    <span>Clientes</span></a>
+                </li>
+                <li>
+                    <a href="admins.php"><span class="las la-users"></span>
+                    <span>Administradores</span></a>
                 </li>
                 <li>
                     <a href="#"><span class="las la-user-circle"></span>

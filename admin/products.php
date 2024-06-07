@@ -89,6 +89,7 @@ $products = $stmt2->get_result();
                                 <td>Img</td>
                                 <td>Nome</td>
                                 <td>Valor</td>
+                                <td>Quant</td>
                                 <td>Categoria</td>
                                 <td>Descrição</td>
                                 <td>Editar</td>
@@ -101,7 +102,7 @@ $products = $stmt2->get_result();
                                     <td><strong><?php echo $product['product_id']; ?></strong></td>
                                     <td><img src="<?php echo "../assets/imgs/" . $product['product_image']; ?>" style="width: 70px; height: 70px;"/></td>
                                     <td><?php echo $product['product_name']; ?></td>
-                                    <td style="color: #6221fe;"><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td>
+                                    <td style="color: #6221fe;"><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td><td><?php echo $product['product_quant']; ?></td>
                                     <td><?php echo $product['product_category']; ?></td>
                                     <td><?php echo $product['product_description']; ?></td>
                                     

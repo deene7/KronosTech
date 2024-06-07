@@ -14,11 +14,13 @@ if (isset($_GET['product_id'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
+    $quant = $_POST['quant'];
     $category = $_POST['category'];
+    $product_quant = $_POST['product_quant']; // Novo campo product_quant
 
 
-    $stmt = $conn->prepare("UPDATE products SET product_name=?, product_description=?, product_price=?, product_category=? WHERE product_id=?");
-    $stmt->bind_param('ssdsi', $name, $description, $price, $category, $product_id);
+    $stmt = $conn->prepare("UPDATE products SET product_name=?, product_description=?, product_price=?, product_quant=?, product_category=? WHERE product_id=?");
+    $stmt->bind_param('ssdsii', $name, $description, $price, $quant, $category, $product_id);
 
     if ($stmt->execute()) {
         $stmt->close();  // Fechar o statement após a execução
@@ -38,6 +40,7 @@ if (isset($_GET['product_id'])) {
 }
 ?>
 
+
 <div class="recent-grid">
     <div class="projects">
         <div class="card">
@@ -52,6 +55,7 @@ if (isset($_GET['product_id'])) {
                     <h4>Nome:</h4> <input type="text" name="name" class="input-large" value="<?php echo $product['product_name']; ?>" placeholder="Nome do Produto">
                     <h4>Descrição:</h4> <textarea name="description" class="input-large-textarea" placeholder="Descrição do Produto"><?php echo $product['product_description']; ?></textarea>
                     <h4>Valor (R$):</h4> <input type="text" id="preco" name="price" class="input-large" value="<?php echo $product['product_price']; ?>" placeholder="Valor do Produto" maxlength="7">
+                    <h4>Quantidade:</h4> <input type="text" id="quant" name="quant" class="input-large" value="<?php echo $product['product_quant']; ?>" placeholder="Quant. do Produto" maxlength="7">
                     <h4>Categoria:</h4> <input type="text" name="category" class="input-large" value="<?php echo $product['product_category']; ?>" placeholder="Categoria do Produto"> <br><br>
                     <input type="submit" class="btn btn-primary" name="edit_btn" value="Editar">
                     

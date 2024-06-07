@@ -21,6 +21,7 @@ if(isset($_GET['product_id'])) {
   // Obtém o nome do produto para usar no título
   $row = $product->fetch_assoc();
   $product_cname = $row['product_cname'];
+  $product_quant = $row['product_quant'];
 
 } else {
   header('Location: index.php');
@@ -146,10 +147,11 @@ if(isset($_SESSION['logged_in'])) {
         <input type="hidden" name="product_name" value="<?php echo $row['product_cname']; ?>">
         <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?>">
       <input type="number" name="product_quantity" value="1" min="1">
-      <button class="buy-button" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>
+      <?php if ($product_quant >= 1 && $product_quant > 0){echo "<button class='buy-button' type='submit' name='add_to_cart'>Adicionar ao Carrinho</button>";} else {echo "<button class='buy-button disabled' type='submit' name='add_to_cart' disabled>Produto Indisponível</button>";}?>
     </form>
 
       <h4 class="mt-5">Detalhes do Produto</h4>
+      <?php if($product_quant >= 1 && $product_quant > 0){echo "<h4 class='estoque-true'>Em Estoque<h4>";}else {echo "<h4 class='estoque-false'>Sem estoque<h4>";} $product_quant; ?>
       <h6>Características</h6>
       <span><?php echo $row['product_description']; ?></span>
     </div>

@@ -1032,7 +1032,7 @@ body.dark-mode .card.categ .contentBox h3 {
 .row-cards {
   display: flex;
   justify-content: space-around;
-  margin: 15px 19vw 95px;
+  margin: 15px 19vw 15px;
 }
 
 .card.categ img:hover {
@@ -1091,4 +1091,27 @@ body.dark-mode .btn-secondary {
 .carousel-item {
   width: 100vw;
   height: auto;
+}
+
+.estoque-true {
+  color: #6222fe;
+}
+
+.estoque-false {
+  color: #555;
+  opacity: 0.8;
+}
+
+.buy-button.disabled {
+  /* Estilo do botão desativado */
+  background-color: #dfdfdf; /* Cor de fundo cinza */
+  color: #000;
+  cursor: not-allowed; /* Cursor inativo */
+}
+
+.buy-button.disabled:hover {
+  /* Estilo do botão desativado */
+  background-color: #cccccc; /* Cor de fundo cinza */
+  color: #000;
+  cursor: not-allowed; /* Cursor inativo */
 }

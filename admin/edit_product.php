@@ -14,13 +14,18 @@ if (isset($_GET['product_id'])) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $quant = $_POST['quant'];
+    $quant = $_POST['quantity'];
     $category = $_POST['category'];
-    $product_quant = $_POST['product_quant']; // Novo campo product_quant
+
+    // $product_quant = $_POST['quantity']; // Novo campo product_quant
 
 
     $stmt = $conn->prepare("UPDATE products SET product_name=?, product_description=?, product_price=?, product_quant=?, product_category=? WHERE product_id=?");
-    $stmt->bind_param('ssdsii', $name, $description, $price, $quant, $category, $product_id);
+    // $stmt->bind_param('ssdsii', $name, $description, $price, $quant, $category, $product_id);
+    $stmt->bind_param('ssdisi', $name, $description, $price, $quant, $category, $product_id);
+    
+
+
 
     if ($stmt->execute()) {
         $stmt->close();  // Fechar o statement após a execução
@@ -55,8 +60,27 @@ if (isset($_GET['product_id'])) {
                     <h4>Nome:</h4> <input type="text" name="name" class="input-large" value="<?php echo $product['product_name']; ?>" placeholder="Nome do Produto">
                     <h4>Descrição:</h4> <textarea name="description" class="input-large-textarea" placeholder="Descrição do Produto"><?php echo $product['product_description']; ?></textarea>
                     <h4>Valor (R$):</h4> <input type="text" id="preco" name="price" class="input-large" value="<?php echo $product['product_price']; ?>" placeholder="Valor do Produto" maxlength="7">
-                    <h4>Quantidade:</h4> <input type="text" id="quant" name="quant" class="input-large" value="<?php echo $product['product_quant']; ?>" placeholder="Quant. do Produto" maxlength="7">
-                    <h4>Categoria:</h4> <input type="text" name="category" class="input-large" value="<?php echo $product['product_category']; ?>" placeholder="Categoria do Produto"> <br><br>
+                    <h4>Quantidade:</h4> <input type="number" id="quant" name="quantity" class="input-large" value="<?php echo $product['product_quant']; ?>" placeholder="Quant. do Produto" maxlength="7">
+                    <h4>Categoria: </h4>
+                    <select name="category" class="input-large">
+                        <option value="" disabled="">Selecione a categoria correspondente</option>
+                        <option class="category-option" value="Placa Mãe" <?php if ($product['product_category'] == "Placa Mãe") echo "selected"; ?>>Placa Mãe</option>
+                        <option class="category-option" value="Fone de ouvido" <?php if ($product['product_category'] == "Fone de ouvido") echo "selected"; ?>>Fone de ouvido</option>
+                        <option class="category-option" value="Processador" <?php if ($product['product_category'] == "Processador") echo "selected"; ?>>Processador</option>
+                        <option class="category-option" value="Placa de vídeo" <?php if ($product['product_category'] == "Placa de vídeo") echo "selected"; ?>>Placa de vídeo</option>
+                        <option class="category-option" value="Gabinete" <?php if ($product['product_category'] == "Gabinete") echo "selected"; ?>>Gabinete</option>
+                        <option class="category-option" value="Memória" <?php if ($product['product_category'] == "Memória") echo "selected"; ?>>Memória</option>
+                        <option class="category-option" value="Mouse" <?php if ($product['product_category'] == "Mouse") echo "selected"; ?>>Mouse</option>
+                        <option class="category-option" value="SSD" <?php if ($product['product_category'] == "SSD") echo "selected"; ?>>SSD</option>
+                        <option class="category-option" value="HDD" <?php if ($product['product_category'] == "HDD") echo "selected"; ?>>HDD</option>
+                        <option class="category-option" value="Fonte" <?php if ($product['product_category'] == "Fonte") echo "selected"; ?>>Fonte</option>
+                        <option class="category-option" value="Cadeira" <?php if ($product['product_category'] == "Cadeira") echo "selected"; ?>>Cadeira</option>
+                        <option class="category-option" value="Teclado" <?php if ($product['product_category'] == "Teclado") echo "selected"; ?>>Teclado</option>
+                        <option class="category-option" value="Monitor" <?php if ($product['product_category'] == "Monitor") echo "selected"; ?>>Monitor</option>
+                    </select>
+
+                    
+                    <br><br>
                     <input type="submit" class="btn btn-primary" name="edit_btn" value="Editar">
                     
                 </form>

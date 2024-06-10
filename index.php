@@ -41,9 +41,6 @@ if(isset($_SESSION['logged_in'])) {
 <?php include('layouts/navbar.php'); ?>
 
 
-  
-
-
   <br>
   <!--CARROSEL ADS-->
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="padding-top:95px;">
@@ -133,7 +130,7 @@ if(isset($_SESSION['logged_in'])) {
     <div class="container text-center mt-5 py-5">
       <h3>Produtos</h3>
       <hr class="custom-hr-index">
-      <p>Produtos em destaque</p>
+      <p>Confira os produtos mais vendidos!!</p>
     </div>
      
 <!--CARDS PRODUTOS -->

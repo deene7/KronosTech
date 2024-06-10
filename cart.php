@@ -22,7 +22,7 @@ if(isset($_POST['add_to_cart'])) {
 
     //o produto ja foi adicionado
     }else {
-      echo '<script>alert("O produto foi adicionado ao carrinho.")</script>';
+      echo '<script>alert("Este produto já foi adicionado ao carrinho.")</script>';
     }
 
     //se esse é o primeiro produto

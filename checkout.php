@@ -94,8 +94,8 @@ if(!empty($_SESSION['cart'])) {
         
         </p>
             <div class="form-group checkout-small-element">
-                <label>Nome</label>
-                <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Nome" required/>
+                <label>Nome Completo</label>
+                <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Nome Completo" required/>
             </div>
             <div class="form-group checkout-small-element">
                 <label>Email</label>

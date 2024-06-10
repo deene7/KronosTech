@@ -20,7 +20,7 @@ $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-$total_records_per_page = 4; // Alterado para 5 produtos por página
+$total_records_per_page = 10; // Alterado para 5 produtos por página
 $offset = ($page_no - 1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;

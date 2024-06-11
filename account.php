@@ -212,6 +212,11 @@ th:last-child {
 <!--MINHA CONTA-->
 <section class="my-5 py-5">
     <div class="row container mx-auto">
+
+      <?php if(isset($_GET['payment_message'])) { ?>
+        <p class="mt-5 text-center" style="color:green;"><?php echo $_GET['payment_message']; ?></p>
+        <?php } ?>
+      
         <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
         <p class="text-center" style="color:green"><?php if(isset($_GET['register_success'])) {echo $_GET['register_success'];} ?></p>
         <p class="text-center" style="color:green"><?php if(isset($_GET['login_success'])) {echo $_GET['login_success'];} ?></p>

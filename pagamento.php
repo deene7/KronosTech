@@ -81,10 +81,14 @@ if (isset($_POST['order_pay_btn'])) {
     <div class="mx-auto container text-center">
         <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
             <p>Total a Pagar: <?php echo 'R$ ' . number_format($_SESSION['total'], 2, ',', '.'); ?></p>
+            <?php $order_id = $_SESSION['order_id']; ?>
             <div id="paypal-button-container"></div>
+
         <?php } elseif (isset($_POST['order_status']) && $_POST['order_status'] == "Aguardando Pagamento") { ?>
             <p>Total a Pagar: <?php echo 'R$ ' . number_format($_POST['order_total_price'], 2, ',', '.'); ?></p>
+            <?php $order_id = $_POST['order_id']; ?>
             <div id="paypal-button-container"></div>
+
         <?php } else { ?>
             <p>Você não fez um pedido.</p>
         <?php } ?>
@@ -114,6 +118,8 @@ if (isset($_POST['order_pay_btn'])) {
                 console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                 var transaction = orderData.purchase_units[0].payments.captures[0];
                 alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                
+                window.location.href = "server/complete_payment.php?transaction_id="+transaction.id+"&order_id="+<?php echo $order_id; ?>;
             });
         }
     }).render('#paypal-button-container');

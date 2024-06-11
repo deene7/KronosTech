@@ -41,7 +41,7 @@ $users = $stmt2->get_result();
             </div>
             <div class="card-body">
             <div class="table-responsive">
-                    <table width="100%" class="orders-table">
+                    <table width="100%" class="orders-table" id="tabelaOrdenada">
                         <thead>
                             <tr>
                                 <td>Id</td>
@@ -59,7 +59,7 @@ $users = $stmt2->get_result();
                                     <td><?php echo $user['user_cpf']; ?></td>
                                     <td><?php echo $user['user_email']; ?></td>
                                     <td><?php echo $user['user_phone']; ?></td>
-                                    <td><hidden button></button></td>
+                                    <!-- <td><hidden button></button></td> -->
                                 </tr>
                             <?php } ?>
                         </tbody>

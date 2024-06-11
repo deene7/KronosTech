@@ -42,7 +42,7 @@ $orders = $stmt2->get_result();
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table width="100%" class="orders-table">
+                        <table width="100%" class="orders-table" id="tabelaOrdenada">
                             <thead>
                                 <tr>
                                     <td>Id</td>
@@ -65,7 +65,7 @@ $orders = $stmt2->get_result();
                                         <td><?php echo $order['user_city']; ?></td>
 
                                         <td><button><a class="btn btn-primary" href="view_order.php?order_id=<?php echo $order['order_id']; ?>">Detalhes</a></button></td>
-                                        <td><button><a class="btn btn-danger">Excluir</a></button></td>
+                                        <!-- <td><button><a class="btn btn-danger">Excluir</a></button></td> -->
                                     </tr>
                                 <?php } ?>
                             </tbody>

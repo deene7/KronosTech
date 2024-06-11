@@ -9,7 +9,23 @@
     <title>Painel de Controle | KronosTech</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css"> -->
     <link rel="icon" href="../assets/imgs/logomini.ico" type="image/x-icon">
+    <!-- Incluindo jQuery do CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluindo DataTables CSS do CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- Incluindo DataTables JS do CDN -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tabelaOrdenada').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <input type="checkbox" id="nav-toggle" style="display: none;">

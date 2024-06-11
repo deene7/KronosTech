@@ -1129,3 +1129,8 @@ body.dark-mode .btn-secondary {
 .container .text-center {
   text-align: center;
 }
+
+.container-pag {
+  background-color: rgba(0, 0, 0, 0.05);
+  justify-content: center;
+}

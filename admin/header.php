@@ -21,7 +21,7 @@
         $(document).ready(function() {
             $('#tabelaOrdenada').DataTable({
                 "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/Portuguese-Brasil.json"
+                    "url": "assets/json/Portuguese-brasil.json"
                 }
             });
         });

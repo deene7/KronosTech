@@ -59,12 +59,12 @@ foreach($_SESSION['cart'] as $key => $value) {
     $stmt1->execute();
 }
 
-//5. remover tudo do carrinho -- dps do pagamento ser feito
+    $_SESSION['order_id'] = $order_id;
 
-
-//6.informar ao usuário se está tudo ok ou se tem algum problema
+//5.informar ao usuário se está tudo ok ou se tem algum problema
 header('location: ../pagamento.php?order_status=Pedido Realizado com Sucesso');
-// Limpar a sessão do carrinho após o checkout bem-sucedido
+
+//6.Limpar a sessão do carrinho após o checkout bem-sucedido
 unset($_SESSION['cart']);
 
 }

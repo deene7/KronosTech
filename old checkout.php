@@ -85,67 +85,41 @@ if(!empty($_SESSION['cart'])) {
         <hr class="custom-hr-shop mx-auto">
     </div>
     <div class="mx-auto container">
-    <form id="checkout-form" method="POST" action="server/place_order.php">
-    <p class="text-center" style="color: red;"><?php if(isset($_GET['message'])) {echo $_GET['message'];} ?>
-    <?php if(isset($_GET['message'])) {?>
-        <a href="login.php" class="btn btn-primary">Login</a>
-    <?php } ?>
-    </p>
-    <label>Digite seu CEP: </label>
-    <input type="number" id="cep">
-    <button type="button" class="btn btn-secondary" onclick="consultaEndereco()">Consultar</button>
+        <form id="checkout-form" method="POST" action="server/place_order.php">
+          <p class="text-center" style="color: red;"><?php if(isset($_GET['message'])) {echo $_GET['message'];} ?>
+          <?php if(isset($_GET['message'])) {?>
+            <a  href="login.php" class="btn btn-primary">Login</a>
 
-    <div id="resultado">
-        <p>Endereço: <input type="text" id="endereco" readonly></p> <!-- Campo de endereço agora é readonly -->
-        <p>Complemento: <input type="text" id="complemento" readonly></p> <!-- Campo de complemento readonly -->
-        <p>Bairro: <input type="text" id="bairro" readonly></p> <!-- Campo de bairro readonly -->
-        <p>Cidade: <input type="text" id="cidade" readonly> - <input type="text" id="uf" readonly style="width: 35px;"></p> <!-- Campos de cidade e estado readonly -->
-    </div>
-
-    <button type="submit">Confirmar</button>
-</form>
+            <?php } ?>
         
+        </p>
+            <div class="form-group checkout-small-element">
+                <label>Nome Completo</label>
+                <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Nome Completo" required/>
+            </div>
+            <div class="form-group checkout-small-element">
+                <label>Email</label>
+                <input type="text" class="form-control" id="checkout-email" name="email" placeholder="Email" required/>
+            </div>
+            <div class="form-group checkout-small-element">
+                <label>Celular</label>
+                <input type="number" class="form-control" id="checkout-phone" name="phone" placeholder="Celular" required/>
+            </div>
+            <div class="form-group checkout-small-element">
+                <label>Cidade</label>
+                <input type="text" class="form-control" id="checkout-city" name="city" placeholder="Cidade" required/>
+            </div>
+            <div class="form-group checkout-large-element">
+                <label>Endereço</label>
+                <input type="text" class="form-control" id="checkout-address" name="address" placeholder="Endereço" required/>
+            </div>
+            <div class="form-group checkout-btn-container">
+              <p>Preço total: <?php echo 'R$ ' . number_format($_SESSION['total'], 2, ',', '.'); ?></p>
+                <input type="submit" class="btn" id="checkout-btn" name="place_order"value="Finalizar Compra"/>
+            </div>
+        </form>
     </div>
 </section>
 
-<script>
-function consultaEndereco() {
-    let cep = document.querySelector('#cep').value;
 
-    // Verificação do formato do CEP
-    if (!/^\d{8}$/.test(cep)) { // Verifica se o CEP possui 8 dígitos numéricos
-        alert('CEP inválido!');
-        return;
-    }
-
-    let url = `https://viacep.com.br/ws/${cep}/json/`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            mostrarEndereco(data);
-        })
-        .catch(error => console.error('Erro ao consultar o CEP:', error));
-}
-
-function mostrarEndereco(dados) {
-    let resultado = document.querySelector('#resultado');
-    if (dados.erro) {
-        resultado.innerHTML = "Não foi possível localizar seu endereço!";
-    } else {
-        document.getElementById('endereco').value = dados.logradouro;
-        document.getElementById('complemento').value = dados.complemento;
-        document.getElementById('bairro').value = dados.bairro;
-        document.getElementById('cidade').value = dados.localidade;
-        document.getElementById('uf').value = dados.uf;
-
-        // Habilitar campos para edição
-        document.getElementById('endereco').readOnly = false;
-        document.getElementById('complemento').readOnly = false;
-        document.getElementById('bairro').readOnly = false;
-        document.getElementById('cidade').readOnly = false;
-        document.getElementById('uf').readOnly = false;
-    }
-}
-</script>
 <?php include('layouts/footer.php'); ?>

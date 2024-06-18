@@ -26,14 +26,7 @@ if(!empty($_SESSION['cart'])) {
       #marca img {
         max-width: 11%;
         height: auto;
-    }
-
-    
-      .container-cep {
-        justify-content: center;
-        align-items: center;
-      }
-    
+    }    
     </style>
 
 </head>

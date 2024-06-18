@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/06/2024 às 20:42
+-- Tempo de geração: 18/06/2024 às 16:47
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -41,7 +41,6 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_cpf`, `admin_email`, `admin_phone`, `admin_password`) VALUES
-(1, 'Kronos', '082.194.501-22', 'admin@gmail.com', '', '$2y$10$49bnifg1gj9ULsp2JO/T7eCOmwOKGZcpBca9fDy0d9Htdd1Ii.o8a'),
 (3, 'Paulo', '082.194.501-22', 'paulo@gmail.com', '', '$2y$10$onCYvca6J.AVa7LJcobVnutZiQmTJuZhNWZnq2VBR63HSW4uvYs2y'),
 (4, 'Lucas', '082.194.501-22', 'lucas@gmail.com', '', '$2y$10$qkHWMiVm6pkI9d8yhSE0Ue3wviFtGpt92XKgBCSAWwjqo4flfrAuS'),
 (5, 'Kelvin', '082.194.501-22', 'kelvin@gmail.com', '', '$2y$10$JioxvNRmrtw341hbhLRANOJAyFaScfHvf.ks4.qzlVJ5aPwy3.W5O'),
@@ -58,7 +57,9 @@ CREATE TABLE `orders` (
   `order_cost` decimal(6,2) NOT NULL,
   `order_status` varchar(100) NOT NULL DEFAULT 'on_hold',
   `user_id` int(11) NOT NULL,
-  `user_phone` text NOT NULL,
+  `user_name` varchar(108) NOT NULL,
+  `user_phone` varchar(16) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
   `user_city` varchar(255) NOT NULL,
   `user_address` varchar(255) NOT NULL,
   `complemento` varchar(255) DEFAULT NULL,
@@ -72,32 +73,8 @@ CREATE TABLE `orders` (
 -- Despejando dados para a tabela `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_id`, `user_phone`, `user_city`, `user_address`, `complemento`, `bairro`, `uf`, `cep`, `order_date`) VALUES
-(71, 1089.00, 'Aguardando Pagamento', 1, '222222222', 'ceilandia', 'qnn 20 conjunto c casa 40', NULL, NULL, NULL, NULL, '2024-06-10 17:20:12'),
-(72, 5445.00, 'Aguardando Pagamento', 1, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-10 17:31:48'),
-(73, 1089.00, 'Aguardando Pagamento', 2, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 01:11:30'),
-(74, 1089.00, 'Aguardando Pagamento', 2, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 01:13:08'),
-(75, 1089.00, 'Aguardando Pagamento', 2, '2', '2', '2', NULL, NULL, NULL, NULL, '2024-06-11 01:21:23'),
-(76, 4356.00, 'Pedido Pago', 2, '2', '2', '2', NULL, NULL, NULL, NULL, '2024-06-11 01:21:33'),
-(77, 1089.00, 'Pedido Pago', 3, '3', '3', '3', NULL, NULL, NULL, NULL, '2024-06-11 11:43:35'),
-(78, 1089.00, 'Pedido Pago', 3, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 11:44:14'),
-(79, 3267.00, 'Pedido Pago', 3, '2', '2', '2', NULL, NULL, NULL, NULL, '2024-06-11 11:54:45'),
-(80, 1089.00, 'Pedido Pago', 4, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 20:11:46'),
-(81, 1089.00, 'Pedido Pago', 4, '2', '2', '2', NULL, NULL, NULL, NULL, '2024-06-11 20:36:27'),
-(82, 1089.00, 'Pedido Pago', 4, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 20:40:26'),
-(83, 1089.00, 'Aguardando Pagamento', 4, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 20:41:41'),
-(84, 1089.00, 'Pedido Pago', 4, '1', '1', '1', NULL, NULL, NULL, NULL, '2024-06-11 20:42:01'),
-(85, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', '', 'Samambaia Sul (Samambaia)', 'DF', NULL, '2024-06-17 15:04:17'),
-(86, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', '', 'Samambaia Sul (Samambaia)', 'DF', NULL, '2024-06-17 15:04:30'),
-(87, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', 'casa fdp', 'Samambaia Sul (Samambaia)', 'DF', NULL, '2024-06-17 15:07:33'),
-(88, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', '', 'Samambaia Sul (Samambaia)', 'DF', NULL, '2024-06-17 15:09:13'),
-(89, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', '', 'Samambaia Sul (Samambaia)', 'DF', '72308800', '2024-06-17 15:14:55'),
-(90, 2399.00, 'Aguardando Pagamento', 2, '123456789', '', '', '', '', '', '7230880', '2024-06-17 15:15:16'),
-(91, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', 'vai tomar no cu paulo', 'Samambaia Sul (Samambaia)', 'DF', '7230880', '2024-06-17 15:16:25'),
-(92, 2399.00, 'Aguardando Pagamento', 2, '123456789', '', '', '', '', '', '7200000', '2024-06-17 15:21:17'),
-(93, 2399.00, 'Aguardando Pagamento', 2, '123456789', '', '', '', '', '', '2321', '2024-06-17 15:31:20'),
-(94, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', 'casa cinza', 'Samambaia Sul (Samambaia)', 'DF', '72308800', '2024-06-17 15:38:54'),
-(95, 2399.00, 'Aguardando Pagamento', 2, '123456789', 'Brasília', 'QR 318', '213', 'Samambaia Sul (Samambaia)', 'DF', '72308800', '2024-06-17 15:39:47');
+INSERT INTO `orders` (`order_id`, `order_cost`, `order_status`, `user_id`, `user_name`, `user_phone`, `user_email`, `user_city`, `user_address`, `complemento`, `bairro`, `uf`, `cep`, `order_date`) VALUES
+(113, 1089.00, 'Aguardando Pagamento', 6, '', '123456789', '', 'Brasília', 'QNN 20 Conjunto F', 'casa 22', 'Ceilândia Sul (Ceilândia)', 'DF', '72220206', '2024-06-18 10:16:38');
 
 -- --------------------------------------------------------
 
@@ -122,34 +99,18 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`item_id`, `order_id`, `product_id`, `product_name`, `product_image`, `product_price`, `product_quantity`, `user_id`, `order_date`) VALUES
-(98, 68, '1', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AMD', 'new1.jpg', 1155.00, 1, 10, '2024-05-22 16:00:01'),
-(99, 69, '3', 'Teclado Mecânico Gamer Razer Blackwidow V3', 'new3.webp', 899.00, 1, 11, '2024-05-29 00:08:46'),
-(100, 70, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 12, '2024-06-05 16:23:34'),
-(101, 71, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 1, '2024-06-10 17:20:12'),
-(102, 72, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 5, 1, '2024-06-10 17:31:48'),
-(103, 73, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 2, '2024-06-11 01:11:30'),
-(104, 74, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 2, '2024-06-11 01:13:08'),
-(105, 75, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 2, '2024-06-11 01:21:23'),
-(106, 76, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 4, 2, '2024-06-11 01:21:33'),
-(107, 77, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 3, '2024-06-11 11:43:35'),
-(108, 78, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 3, '2024-06-11 11:44:14'),
-(109, 79, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 3, 3, '2024-06-11 11:54:45'),
-(110, 80, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 4, '2024-06-11 20:11:46'),
-(111, 81, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 4, '2024-06-11 20:36:27'),
-(112, 82, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 4, '2024-06-11 20:40:26'),
-(113, 83, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 4, '2024-06-11 20:41:41'),
-(114, 84, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 4, '2024-06-11 20:42:01'),
-(115, 85, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:04:17'),
-(116, 86, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:04:30'),
-(117, 87, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:07:33'),
-(118, 88, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:09:13'),
-(119, 89, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:14:55'),
-(120, 90, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:15:16'),
-(121, 91, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:16:25'),
-(122, 92, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:21:17'),
-(123, 93, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:31:20'),
-(124, 94, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:38:54'),
-(125, 95, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 2, '2024-06-17 15:39:47');
+(133, 103, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 6, '2024-06-18 08:50:15'),
+(134, 104, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 6, '2024-06-18 08:59:27'),
+(135, 105, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 6, '2024-06-18 09:00:45'),
+(136, 106, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:01:18'),
+(137, 107, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:02:59'),
+(138, 108, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:07:29'),
+(139, 109, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:14:30'),
+(140, 110, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:16:33'),
+(141, 111, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 09:20:38'),
+(142, 112, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 10:11:37'),
+(143, 112, '2', 'Placa de Vídeo Gigabyte GEFORCE RTX 4060 TI 8GB', 'new2.png', 2399.00, 1, 6, '2024-06-18 10:11:37'),
+(144, 113, '1', 'Processador AMD Ryzen 7 5700x', 'Processador AMD Ryzen 7 5700x 3.4GHz (TURBO 4.6GHz) 32MB CACHE AM4 100-100000926WOF1.jpeg', 1089.00, 1, 6, '2024-06-18 10:16:38');
 
 -- --------------------------------------------------------
 
@@ -164,21 +125,6 @@ CREATE TABLE `payments` (
   `transaction_id` varchar(250) NOT NULL,
   `payment_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Despejando dados para a tabela `payments`
---
-
-INSERT INTO `payments` (`payment_id`, `order_id`, `user_id`, `transaction_id`, `payment_date`) VALUES
-(1, 77, 3, '3EX45329RP1396938', '0000-00-00 00:00:00'),
-(2, 77, 3, '18Y644560T5043203', '0000-00-00 00:00:00'),
-(3, 78, 3, '56614758M5000721J', '0000-00-00 00:00:00'),
-(4, 79, 3, '37610151SH294805T', '0000-00-00 00:00:00'),
-(5, 80, 4, '0FX3186948768822R', '0000-00-00 00:00:00'),
-(6, 81, 4, '7XE871614A202720H', '2024-06-12 01:37:25'),
-(7, 82, 4, '0TR63489TK700831B', '2024-06-12 01:40:53'),
-(8, 84, 4, '0RV11076BM421504S', '2024-06-11 20:42:21'),
-(9, 76, 2, '61K40604TR184235X', '2024-06-17 15:41:12');
 
 -- --------------------------------------------------------
 
@@ -214,7 +160,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `produ
 (7, 'Processador Intel Core i5-13400F 2.5GHz (4.6 Turbo) 10 Core LGA 1700', 'Processador', '\n- Marca Intel <br>\n- Fabricante da CPU: Intel<br>\n- Modelo da CPU: Intel Core i5<br>\n- Soquete da CPU: LGA 1700<br>\n- Plataforma :Windows<br>', 'intel1.jpg', 'intel2.jpg', 'intel3.jpg', NULL, 1459.00, 'Processador Intel Core i5-13400F 2.5GHz', 0),
 (8, 'Placa de Vídeo RX 6600 CLD 8GB ASRock AMD Radeon, 8GB, GDDR6 - 90-GA2RZZ-00UANF', 'Placa de vídeo', ' - Marca: ASRock <br> - Modelo: AMD Radeon RX 6600 CLD 8G<br> - PCI Express 4.0<br> - Capacidade da memória: 8GB<br> - Tipo: GDDR6<br> - Clock: 14 Gbps<br> - Interface: 128 bits<br>', 'radeon1.jpg', 'radeon2.jpg', 'radeon3.jpg', 'radeon4.jpg', 1349.99, 'Placa de Vídeo RX 6600 CLD 8GB ASRock', 0),
 (9, 'Placa Mãe Gigabyte B760M AORUS ELITE (rev. 1.0), LGA 1700, DDR5', 'Placa mãe', '- Marca: Gigabyte<br>\r\n- Modelo: B760M AORUS ELITE<br>\r\n- Soquete LGA1700: suporte para processadores Intel  Core, Pentium  Gold e Celeron  de 13ª e 12ª geração <br>\r\n- Intel B760 Express<br>\r\n- Suporte para DDR5 7600(OC) / 7400(OC) / 7200(OC) / 7000(OC) ', 'bintel3.jpg', 'bintel2.jpg', 'bintel1.jpg', 'bintel4.jpg', 1399.99, 'Placa Mãe Gigabyte B760M AORUS ELITE', 0),
-(10, 'Gabinete Gamer Corsair 7000X, RGB, Full Tower, Lateral em Vidro Temperado, Preto - CC-9011226-WW', 'Gabinete', '- Marca: Corsair<br>\r\n- Modelo: CC-9011226-WW<br>\r\n- Slots de expansão: 8 vertical + 3 horizontal<br>\r\n- Baias Case Drive: (x6) 3,5 pol. (x3) 2,5 pol.<br>\r\n- Fator de forma: TORRE COMPLETA<br>\r\n- Caixa em janela: Vidro temperado<br>\r\n- Cor: PRETO<br>', 'gab corsair1.jpg', 'gab corsair 2.jpg', 'gab corsair 3.jpg', 'gab corsair 4.jpg', 1599.90, 'Gabinete Gamer Corsair 7000X, RGB, Full Tower', 0),
+(10, 'Gabinete Gamer Corsair 7000X, RGB, Full Tower, Lateral em Vidro Temperado, Preto - CC-9011226-WW', 'Gabinete', '- Marca: Corsair<br>\r\n- Modelo: CC-9011226-WW<br>\r\n- Slots de expansão: 8 vertical + 3 horizontal<br>\r\n- Baias Case Drive: (x6) 3,5 pol. (x3) 2,5 pol.<br>\r\n- Fator de forma: TORRE COMPLETA<br>\r\n- Caixa em janela: Vidro temperado<br>\r\n- Cor: PRETO<br>', 'gab corsair1.jpg', 'Gabinete Gamer Corsair 7000X, RGB, Full Tower, Lateral em Vidro Temperado, Preto - CC-9011226-WW2.jpeg', 'gab corsair 3.jpg', 'gab corsair 4.jpg', 1599.90, 'Gabinete Gamer Corsair 7000X, RGB, Full Tower', 0),
 (11, 'Memória Kingston Fury Beast, RGB, 16GB, 3200MHz, DDR4, CL16, Preto - KF432C16BB12A/16', 'Memória', '- Marca: Kingston<br>\r\n- Modelo: KF432C16BB12A/16<br>\r\n- Fonte de alimentação: VDD: 1,2 V Típico<br>\r\n- VDDQ: 1,2 V típico<br>\r\n- VPP: 2,5 V Típico<br>\r\n- VDDSPD: 2,2 V a 3,6 V<br>\r\n- Terminação On-Die (ODT)<br>\r\n- 16 bancos internos; 4 grupos de 4 bancos', 'fury1.jpg', 'fury2.jpg', 'fury3.jpg', 'fury4.jpg', 339.99, 'Memória Kingston Fury Beast, RGB, 16GB', 0),
 (12, 'Mouse Gamer Sem Fio Logitech G Pro X Superlight, 25600 DPI, 5 Botões, USB, Vermelho - 910-006783', 'Mouse', '- Marca: Logitech<br>\r\n- Altura: 125,0 mm<br>\r\n- Largura: 63,5 mm<br>\r\n- Profundidade: 40,0 mm<br>\r\n- 5 botões<br>\r\n- Sensor: HERO<br>\r\n- Resolução: 100 – 25.600 dpi<br>', 'logi1.jpg', 'logi2.jpg', 'logi3.jpg', 'logi4.jpg', 679.00, 'Mouse Gamer Sem Fio Logitech G Pro X Superlight', 0),
 (13, 'SSD 500 GB XPG Spectrix S20G, M.2 2280, PCIe Gen3x4, Leitura: 2500 MB/s e Gravação: 1800 MB/s, 3D NA', 'SSD', '- Marca: XPG<br>\r\n- Modelo: ASPECTRIXS20G-500G-C<br>\r\n- Capacidade: 500 GB<br>\r\n- Fator de forma: M.2 2280<br>\r\n- Flash NAND: 3D NAND<br>\r\n- Leitura sequencial (máx.): Até 2500 MB / s<br>\r\n- Gravação sequencial (máx.): Até 1800 MB / s<br>\r\n- PCIe Gen3x4<b', 'xpg1.jpg', 'xpg2.jpg', 'xpg3.jpg', 'xpg4.jpg', 331.73, 'SSD 500 GB XPG Spectrix S20G, M.2 2280', 0),
@@ -276,10 +222,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_cpf`, `user_name`, `user_email`, `user_phone`, `user_password`) VALUES
-(1, '971.295.612-33', 'rafael', 'rajada@gmail.com', '(22) 2 2222-2222', '$2y$10$G2tWeQAB9I5X.XrTy8sjQ.8DBS4LBGssvHyJXeHY0YoNdMDZZ4D8S'),
-(2, '999.999.999-99', '1', '00@gmail.com', '(99) 9 9999-9999', '$2y$10$IEZdcH89V6oOvlAtgOlcPe4iahfAe10plQrSVLvYg2F.iNZS.eQmy'),
-(3, '3', '3', '3333@gmail.com', '(22) 2 2222-2222', '$2y$10$uInuc68daSoieD1G5/fw5ejHweYihS/MXvDqGnbqy6HwuVag.x9Ge'),
-(4, '222.222.222-22', '1', '22@gmail.com', '(22) 2 2222-2222', '$2y$10$CKHLW.gNmon30t23rIQwhuBPPBwCFhA9CoHKYWSHG0MMokt6EqeH2');
+(6, '072.984.363-92', 'Paulo Rafael', 'paulou@gmail.com', '(61) 9 8248-2666', '$2y$10$yepTQ8Vi7q9/9Enfgo/Fse/8BiIe.EP6GvUZLSiMJnrD.ky5kHNiu');
 
 --
 -- Índices para tabelas despejadas
@@ -337,31 +280,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de tabela `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT de tabela `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT de tabela `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

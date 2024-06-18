@@ -199,10 +199,20 @@ if(isset($_SESSION['logged_in'])) {
     </div>
 
     <div class="checkout-container">
-      <form method="POST" action="checkout.php">
-      <input type="submit" class="btn checkout-btn" value="Continuar" name="checkout">
-      </form>
-    </div>    
+    <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true): ?>
+        <form id="checkout-form" method="POST" action="checkout.php">
+            <p class="text-center" style="color: red;">
+                <?php if (isset($_GET['message'])) echo htmlspecialchars($_GET['message']); ?>
+            </p>
+            <input type="submit" class="btn checkout-btn" value="Continuar" name="checkout">
+        </form>
+    <?php else: ?>
+        <p class="text-center" style="color: red;">
+            Você precisa estar logado para continuar a compra.
+            <a href="login.php" class="btn btn-primary">Login</a>
+        </p>
+    <?php endif; ?>
+</div>  
   </section>
   
   <div class="container text-center mt-5 py-5">

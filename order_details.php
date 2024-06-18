@@ -1,14 +1,4 @@
 <?php
-/*
-POSSIVEIS STATUS
-  -Aguardando pagamento
-  -Pedido pago?
-  -Entregue???(talvez trocar pra pedido pago, pq o maximo do site é o pagamento)
-
-  OBS:-vamo ver como se da isso ao longo dos video
-*/
-
-
 
 include('server/connection.php');
 

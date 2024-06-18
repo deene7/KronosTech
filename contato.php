@@ -46,14 +46,14 @@
     <div class="container text-center mt-5">
         <h3>Fale Conosco</h3>
         <hr class="custom-hr-shop mx-auto">
-        <!--<p class="w-50 mx-auto">
-            Número: <span>(XX)X XXXX-XXXX</span>
-        </p> -->
         <p class="w-50 mx-auto">
-            Endereço de E-mail: 
-            <p>
-                <span>contato.kronostech@gmail.com</span>
-            </p>
+            Deseja tirar dúvidas ou solicitar um reembolso? Entre em contato concosco.
+        </p>
+        <p class="w-50 mx-auto">
+            Whatsapp: <span>(61)9 8248-2666</span>
+        </p>
+        <p class="w-50 mx-auto">
+            <p>Endereço de E-mail: <span>contato.kronostech@gmail.com</span></p>
         </p>
         <p class="w-50 mx-auto">
             A nossa equipe da KronosTech estará sempre à disposição para ajudar você.

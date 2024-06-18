@@ -62,10 +62,6 @@
                     <span>Administradores</span></a>
                 </li>
                 <li>
-                    <a href="#"><span class="las la-user-circle"></span>
-                    <span>Conta</span></a>
-                </li>
-                <li>
                     <a href="logout.php?logout=1"><span class="las la-door-open"></span>
                     <span>Logout</span></a>
                 </li>

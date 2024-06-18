@@ -19,6 +19,13 @@ $stmt1->bind_result($total_clientes);
 $stmt1->fetch();
 $stmt1->close();
 
+// Obter o total de admins
+$stmt1 = $conn->prepare("SELECT COUNT(*) AS total_admins FROM admins");
+$stmt1->execute();
+$stmt1->bind_result($total_admins);
+$stmt1->fetch();
+$stmt1->close();
+
 // Obter o total de produtos
 $stmt2 = $conn->prepare("SELECT COUNT(*) AS total_produtos FROM products");
 $stmt2->execute();
@@ -41,6 +48,15 @@ $stmt3->close();
             <div>
                 <h1><?php echo $total_clientes; ?></h1>
                 <span>Clientes</span>
+            </div>
+            <div>
+                <span class="las la-users"></span>
+            </div>
+        </div>
+        <div class="card-single">
+            <div>
+                <h1><?php echo $total_admins; ?></h1>
+                <span>Administradores</span>
             </div>
             <div>
                 <span class="las la-users"></span>

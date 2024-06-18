@@ -16,8 +16,6 @@ $stmt2->execute();
 $products = $stmt2->get_result();
 ?>
 
-
-
 <div class="recent-grid">
     <div class="projects">
         <div class="card">
@@ -64,46 +62,54 @@ $products = $stmt2->get_result();
             <div class="card-body">
                 <div class="table-responsive">
                 <table width="100%" class="orders-table" id="tabelaOrdenada">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <!-- <td>Img</td> -->
-            <td>Nome</td>
-            <td>Valor</td>
-            <td>Quant</td>
-            <td>Categoria</td>
-            <td>Imagens</td>
-            <td>Detalhes</td>
-            <td>Excluir</td>
-        </tr>
-    </thead>
-    <tbody>
-        <?php while($product = $products->fetch_assoc()) { ?>
-            <tr>
-                <td><strong><?php echo $product['product_id']; ?></strong></td>
-                <!-- <td><img src="<?php echo "../assets/imgs/" . $product['product_image']; ?>" style="width: 70px; height: 70px;"/></td> -->
-                <td><?php echo strlen($product['product_name']) > 70 ? substr($product['product_name'], 0, 70) . '...' : $product['product_name']; ?></td>
-                <td style="color: #6221fe;"><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td>
-                <td><?php echo $product['product_quant']; ?></td>
-                <td><?php echo $product['product_category']; ?></td>
-                <td><button><a class="btn btn-primary" href="edit_images.php?product_id=<?php echo $product['product_id']; ?>&product_name=<?php echo $product['product_name']; ?>">Imagens</a></button></td>
-                <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Detalhes</a></button></td>
-                <td><button><a class="btn btn-primary" href="delete_product.php?product_id=<?php echo $product['product_id']; ?>">Excluir</a></button></td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <!-- <td>Img</td> -->
+                            <td>Nome</td>
+                            <td>Valor</td>
+                            <td>Quant</td>
+                            <td>Categoria</td>
+                            <td>Imagens</td>
+                            <td>Detalhes</td>
+                            <td>Excluir</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while($product = $products->fetch_assoc()) { ?>
+                            <tr>
+                                <td><strong><?php echo $product['product_id']; ?></strong></td>
+                                <!-- <td><img src="<?php echo "../assets/imgs/" . $product['product_image']; ?>" style="width: 70px; height: 70px;"/></td> -->
+                                <td><?php echo strlen($product['product_name']) > 70 ? substr($product['product_name'], 0, 70) . '...' : $product['product_name']; ?></td>
+                                <td style="color: #6221fe;"><?php echo 'R$ ' . number_format($product['product_price'], 2, ',', '.'); ?></td>
+                                <td><?php echo $product['product_quant']; ?></td>
+                                <td><?php echo $product['product_category']; ?></td>
+                                <td><button><a class="btn btn-primary" href="edit_images.php?product_id=<?php echo $product['product_id']; ?>&product_name=<?php echo $product['product_name']; ?>">Imagens</a></button></td>
+                                <td><button><a class="btn btn-primary" href="edit_product.php?product_id=<?php echo $product['product_id']; ?>">Detalhes</a></button></td>
+                                <td><button><a class="btn btn-primary" href="#" onclick="confirmDelete(<?php echo $product['product_id']; ?>)">Excluir</a></button></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-</body>
-</html>
+<script>
+function confirmDelete(productId) {
+    if (confirm("Você tem certeza que deseja excluir este produto?")) {
+        window.location.href = "delete_product.php?product_id=" + productId;
+    }
+}
+</script>
 
 <script>
     $(document).ready(function() {
         $('#tabelaOrdenada').DataTable();
     });
 </script>
+
+</body>
+</html>

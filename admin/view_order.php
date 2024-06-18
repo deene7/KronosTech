@@ -50,8 +50,9 @@
                     </div>
                     <div>
                         <p>Id: <?php echo $r['user_id'];?> </p>
-                        <p>Nome: </p>
+                        <p>Nome: <?php echo $r['user_name']; ?> </p>
                         <p>Celular: <?php echo $r['user_phone'];?></p>
+                        <p>Email: <?php echo $r['user_email'];?></p></p>
                         <p>Cidade: <?php echo $r['user_city'];?></p>
                         <p>Endereço: <?php echo $r['user_address'];?></p>
                     </div>

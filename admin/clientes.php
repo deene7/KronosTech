@@ -6,29 +6,18 @@ include('../server/connection.php');
 $is_filter_applied = false;
 
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
-    // Se o usuário já entrou na página então o número da página fica selecionado
     $page_no = $_GET['page_no'];
 } else {
-    // Número padrão
     $page_no = 1;
 }
 
-// Retorna o número de produtos
 $stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM users");
 $stmt1->execute();
 $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-$total_records_per_page = 10; // Alterado para 5 produtos por página
-$offset = ($page_no - 1) * $total_records_per_page;
-$previous_page = $page_no - 1;
-$next_page = $page_no + 1;
-$adjacents = "2";
-$total_no_of_pages = ceil($total_records / $total_records_per_page);
-
-$stmt2 = $conn->prepare("SELECT * FROM users LIMIT ?, ?");
-$stmt2->bind_param("ii", $offset, $total_records_per_page);
+$stmt2 = $conn->prepare("SELECT * FROM users");
 $stmt2->execute();
 $users = $stmt2->get_result();
 ?>
@@ -39,6 +28,15 @@ $users = $stmt2->get_result();
             <div class="card-header">
                 <h3>Lista de Clientes</h3>
             </div>
+
+            <?php if(isset($_GET['deleted_successfully'])) {?>
+            <p class="text-center" style="color: green; text-align: center; font-weight: bold;"><?php echo $_GET['deleted_successfully'] ?></p>
+            <?php } ?>
+
+            <?php if(isset($_GET['deleted_failure'])) {?>
+            <p class="text-center" style="color: red; text-align: center; font-weight: bold;"><?php echo $_GET['deleted_failure'] ?></p>
+            <?php } ?>
+
             <div class="card-body">
             <div class="table-responsive">
                     <table width="100%" class="orders-table" id="tabelaOrdenada">
@@ -49,6 +47,7 @@ $users = $stmt2->get_result();
                                 <td>CPF</td>
                                 <td>Email</td>
                                 <td>Telefone</td>
+                                <td>Excluir</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +58,7 @@ $users = $stmt2->get_result();
                                     <td><?php echo $user['user_cpf']; ?></td>
                                     <td><?php echo $user['user_email']; ?></td>
                                     <td><?php echo $user['user_phone']; ?></td>
-                                    <!-- <td><hidden button></button></td> -->
+                                    <td><button><a class="btn btn-primary" href="#" onclick="confirmDelete(<?php echo $user['user_id']; ?>)">Excluir</a></button></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -68,6 +67,14 @@ $users = $stmt2->get_result();
         </div>
     </div>
 </div>
+
+<script>
+function confirmDelete(userId) {
+    if (confirm("Você tem certeza que deseja excluir este cliente?")) {
+        window.location.href = "delete_user.php?user_id=" + userId;
+    }
+}
+</script>
 
 </body>
 </html>

@@ -20,15 +20,8 @@ $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-$total_records_per_page = 4; // Alterado para 5 produtos por página
-$offset = ($page_no - 1) * $total_records_per_page;
-$previous_page = $page_no - 1;
-$next_page = $page_no + 1;
-$adjacents = "2";
-$total_no_of_pages = ceil($total_records / $total_records_per_page);
-
-$stmt2 = $conn->prepare("SELECT * FROM admins LIMIT ?, ?");
-$stmt2->bind_param("ii", $offset, $total_records_per_page);
+// Atualize a consulta para recuperar todos os produtos
+$stmt2 = $conn->prepare("SELECT * FROM admins");
 $stmt2->execute();
 $admins = $stmt2->get_result();
 ?>
@@ -41,7 +34,7 @@ $admins = $stmt2->get_result();
             </div>
             <div class="card-body">
             <div class="table-responsive">
-                    <table width="100%" class="orders-table">
+                    <table width="100%" class="orders-table" id="tabelaOrdenada">
                         <thead>
                             <tr>
                                 <td>Id</td>
@@ -59,7 +52,6 @@ $admins = $stmt2->get_result();
                                     <td><?php echo $admin['admin_cpf']; ?></td>
                                     <td><?php echo $admin['admin_email']; ?></td>
                                     <td><?php echo $admin['admin_phone']; ?></td>
-                                    <td><hidden button></button></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

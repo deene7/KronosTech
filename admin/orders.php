@@ -12,21 +12,14 @@ if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
 }
 
 // Retorna o número de produtos
-$stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM orders");
+$stmt1 = $conn->prepare("SELECT COUNT(*) AS total_records FROM orders");
 $stmt1->execute();
 $stmt1->bind_result($total_records);
 $stmt1->store_result();
 $stmt1->fetch();
 
-$total_records_per_page = 10;
-$offset = ($page_no - 1) * $total_records_per_page;
-$previous_page = $page_no - 1;
-$next_page = $page_no + 1;
-$adjacents = "2";
-$total_no_of_pages = ceil($total_records / $total_records_per_page);
-
-$stmt2 = $conn->prepare("SELECT * FROM orders LIMIT ?, ?");
-$stmt2->bind_param("ii", $offset, $total_records_per_page);
+// Atualize a consulta para recuperar todos os produtos
+$stmt2 = $conn->prepare("SELECT * FROM orders");
 $stmt2->execute();
 $orders = $stmt2->get_result();
 ?>
@@ -74,11 +67,5 @@ $orders = $stmt2->get_result();
                 </div>
             </div>
         </div>
-        
-
-
-
-
-
 </body>
 </html>

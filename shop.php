@@ -29,18 +29,32 @@ if (isset($_POST['search']) || isset($_GET['category'])) {
     // Marca que um filtro foi aplicado
     $is_filter_applied = true;
 
-    // Prepara a consulta SQL para selecionar produtos apenas com a categoria selecionada
-    if (!empty($category)) {
-        $stmt = $conn->prepare("SELECT * FROM products WHERE product_category = ?");
-        $stmt->bind_param("s", $category);
+    if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
+        $page_no = $_GET['page_no'];
     } else {
-        // Se a categoria não foi selecionada, retorna todos os produtos
-        $stmt = $conn->prepare("SELECT * FROM products");
+        $page_no = 1;
     }
 
-    // Executa a consulta preparada
-    $stmt->execute();
-    $products = $stmt->get_result();
+    // Calcula o total de registros e define a paginação
+    $stmt1 = $conn->prepare("SELECT COUNT(*) As total_records FROM products WHERE product_category = ?");
+    $stmt1->bind_param("s", $category);
+    $stmt1->execute();
+    $stmt1->bind_result($total_records);
+    $stmt1->store_result();
+    $stmt1->fetch();
+
+    $total_records_per_page = 8;
+    $offset = ($page_no - 1) * $total_records_per_page;
+    $previous_page = $page_no - 1;
+    $next_page = $page_no + 1;
+    $adjacents = "2";
+    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+
+    // Prepara a consulta SQL para selecionar produtos apenas com a categoria selecionada
+    $stmt2 = $conn->prepare("SELECT * FROM products WHERE product_category = ? LIMIT ?, ?");
+    $stmt2->bind_param("sii", $category, $offset, $total_records_per_page);
+    $stmt2->execute();
+    $products = $stmt2->get_result();
     $products_array = $products->fetch_all(MYSQLI_ASSOC);
 
 } else {
@@ -188,29 +202,25 @@ if (isset($_POST['search']) || isset($_GET['category'])) {
             </div>
 
             <!-- Navegação de Página-->
-            <?php if (!$is_filter_applied) { ?>
             <div class="row">
                 <nav aria-label="Page navigation example" class="mx-auto">
                     <ul class="pagination mt-5 mx-auto">
                         <li class="page-item <?php if ($page_no <= 1) { echo 'disabled'; } ?>">
-                            <a class="page-link" href="<?php if ($page_no <= 1) { echo '#'; } else { echo "?page_no=" . ($page_no - 1); } ?>">Anterior</a>
+                            <a class="page-link" href="<?php if ($page_no <= 1) { echo '#'; } else { echo "?page_no=" . ($page_no - 1) . ($is_filter_applied ? "&category=" . $category : ""); } ?>">Anterior</a>
                         </li>
 
-                        <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
-                        <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
-
-                        <?php if ($page_no >= 3) { ?>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="<?php echo "?page_no=" . $page_no ?>"><?php echo $page_no; ?></a></li>
+                        <?php for ($i = 1; $i <= $total_no_of_pages; $i++) { ?>
+                            <li class="page-item <?php if ($page_no == $i) { echo 'active'; } ?>">
+                                <a class="page-link" href="shop.php?page_no=<?php echo $i . ($is_filter_applied ? "&category=" . $category : ""); ?>"><?php echo $i; ?></a>
+                            </li>
                         <?php } ?>
 
                         <li class="page-item <?php if ($page_no >= $total_no_of_pages) { echo 'disabled'; } ?>">
-                            <a class="page-link" href="<?php if ($page_no >= $total_no_of_pages) { echo '#'; } else { echo "?page_no=" . $next_page; } ?>">Próximo</a>
+                            <a class="page-link" href="<?php if ($page_no >= $total_no_of_pages) { echo '#'; } else { echo "?page_no=" . $next_page . ($is_filter_applied ? "&category=" . $category : ""); } ?>">Próximo</a>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <?php } ?>
         </div>
     </div>
 </section>

@@ -28,12 +28,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="cart.php"><ion-icon name="cart"></ion-icon>
-              <?php if(isset($_SESSION['quantity']) && $_SESSION['quantity'] !=0) { ?>
-                <span class="cart-quantity"> <?php echo $_SESSION['quantity']; ?></span>
-                <?php } ?>
-            
-          </a>
+            <a href="cart.php"><ion-icon name="cart"></ion-icon></a>
 
           </li> 
         </ul>  

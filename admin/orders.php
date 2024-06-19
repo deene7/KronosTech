@@ -22,6 +22,20 @@ $stmt1->fetch();
 $stmt2 = $conn->prepare("SELECT * FROM orders");
 $stmt2->execute();
 $orders = $stmt2->get_result();
+
+$stmt2 = $conn->prepare("
+    SELECT 
+        o.*, 
+        u.user_name, 
+        u.user_phone, 
+        u.user_email
+    FROM 
+        orders o
+    JOIN 
+        users u ON o.user_id = u.user_id
+");
+$stmt2->execute();
+$orders = $stmt2->get_result();
 ?>
 
 <?php include('header.php') ?>
@@ -48,7 +62,7 @@ $orders = $stmt2->get_result();
                             <tr>
                                 <td>Id</td>
                                 <td>Status</td>
-                                <td>Id do Cliente</td>
+                                <td>Id Cliente</td>
                                 <td>Data do Pedido</td>
                                 <td>Celular</td>
                                 <td>Cidade</td>

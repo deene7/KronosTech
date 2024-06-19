@@ -132,6 +132,9 @@ if(isset($_POST['login_btn'])) {
             <div class="form-group">
                 <a id="register-url" >Não tem uma conta? <a href="register.php" style="color: #6221fe; text-decoration: none">Criar Conta</a>
             </div>
+            <div class="form-group">
+                <a id="register-url" ><a href="forgot.php" style="color: #6221fe; text-decoration: none">Esqueci minha senha</a>
+            </div>
         </form>
     </div>
 </section>

@@ -56,7 +56,7 @@
             <p>Endereço de E-mail: <span>contato.kronostech@gmail.com</span></p>
         </p>
         <p class="w-50 mx-auto">
-            A nossa equipe da KronosTech estará sempre à disposição para ajudar você.
+            A nossa equipe estará sempre à disposição para ajudar você.
         </p>
 
     </div>

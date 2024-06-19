@@ -208,7 +208,7 @@ if(isset($_SESSION['logged_in'])) {
         </form>
     <?php else: ?>
         <p class="text-center" style="color: red;">
-            Você precisa estar logado para continuar a compra.
+            Você precisa estar logado para realizar compras.
             <a href="login.php" class="btn btn-primary">Login</a>
         </p>
     <?php endif; ?>

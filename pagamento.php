@@ -31,6 +31,10 @@ if (isset($_POST['order_pay_btn'])) {
             max-width: 11%;
             height: auto;
         }
+        #paypal-button-container {
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
@@ -74,11 +78,11 @@ if (isset($_POST['order_pay_btn'])) {
 
 <!--PAGAMENTO-->
 <section class="my-5 py-5">
-    <div class="container text-center mt-3 pt-5">
+    <div class="container mt-3 pt-5">
         <h2 class="form-weight-bold">Pagamento</h2>
-        <hr class="custom-hr-shop mx-auto">
+        <hr class="custom-hr-shop text-align-left">
     </div>
-    <div class="mx-auto container text-center">
+    <div class="mx-auto container">
         <?php if (isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
             <p>Total a Pagar: <?php echo 'R$ ' . number_format($_SESSION['total'], 2, ',', '.'); ?></p>
             <?php $order_id = $_SESSION['order_id']; ?>

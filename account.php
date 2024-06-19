@@ -50,21 +50,31 @@ if(isset($_POST['change_password'])){
   }
 }
 
-// GET ORDERS
+// GET USER INFO
 if(isset($_SESSION['logged_in'])){
-
   $user_id = $_SESSION['user_id'];
-  $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id =? ");
-
-  $stmt->bind_param('i',$user_id);
-
+  $stmt = $conn->prepare("SELECT user_name, user_email, user_cpf, user_phone FROM users WHERE user_id = ?");
+  $stmt->bind_param('i', $user_id);
   $stmt->execute();
+  $result = $stmt->get_result();
+  $user = $result->fetch_assoc();
 
-  $orders = $stmt->get_result();
+  // Check if user exists
+  if(!$user) {
+    header('location: login.php');
+    exit;
+  }
 }
 
+// GET ORDERS
+if(isset($_SESSION['logged_in'])){
+  $user_id = $_SESSION['user_id'];
+  $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id = ?");
+  $stmt->bind_param('i',$user_id);
+  $stmt->execute();
+  $orders = $stmt->get_result();
+}
 ?>
-
 
 
 <!DOCTYPE html>
@@ -222,12 +232,14 @@ th:last-child {
         <p class="text-center" style="color:green"><?php if(isset($_GET['login_success'])) {echo $_GET['login_success'];} ?></p>
             <h3 class="font-weight-bold">Informações da Conta</h3>
             <hr class="custom-hr-shop mx-auto">
-            <div class="account-info">
-                <p>Nome: <span><?php if(isset($_SESSION['user_name'])) { echo $_SESSION['user_name'];} ?></span></p>
-                <p>E-mail: <span><?php if(isset($_SESSION['user_email'])) { echo $_SESSION['user_email'];} ?></span></p>
-                <p><a href="#orders" id="order-btn" style="color: #6221fe; text-decoration: none">Meus Pedidos</a></p>
-                <p><a href="account.php?logout=1" id="logout-btn" style="color: #6221fe; text-decoration: none">Sair da conta</a></p>
-            </div>
+                <div class="account-info">
+                    <p>Nome: <span><?php echo $user['user_name']; ?></span></p>
+                    <p>E-mail: <span><?php echo $user['user_email']; ?></span></p>
+                    <p>CPF: <span><?php echo $user['user_cpf']; ?></span></p>
+                    <p>Celular: <span><?php echo $user['user_phone']; ?></span></p>
+                    <p><a href="#orders" id="order-btn" style="color: #6221fe; text-decoration: none">Meus Pedidos</a></p>
+                    <p><a href="account.php?logout=1" id="logout-btn" style="color: #6221fe; text-decoration: none">Sair da conta</a></p>
+                </div>
         </div>
 
         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -286,7 +298,9 @@ th:last-child {
                 </td>
 
                 <td>
-                  <span><?php echo 'R$ ' . number_format($row['order_cost'], 2, ',', '.'); ?></span>
+                <span><?php echo 'R$ ' . number_format($row['order_cost'], 2, ',', '.'); ?></span>
+
+
                 </td>
 
                 <td>

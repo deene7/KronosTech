@@ -38,7 +38,7 @@ $users = $stmt2->get_result();
             <?php } ?>
 
             <div class="card-body">
-            <div class="table-responsive">
+                <div class="table-responsive">
                     <table width="100%" class="orders-table" id="tabelaOrdenada">
                         <thead>
                             <tr>
@@ -47,6 +47,7 @@ $users = $stmt2->get_result();
                                 <td>CPF</td>
                                 <td>Email</td>
                                 <td>Telefone</td>
+                                <td>Detalhes</td>
                                 <td>Excluir</td>
                             </tr>
                         </thead>
@@ -58,11 +59,13 @@ $users = $stmt2->get_result();
                                     <td><?php echo $user['user_cpf']; ?></td>
                                     <td><?php echo $user['user_email']; ?></td>
                                     <td><?php echo $user['user_phone']; ?></td>
+                                    <td><a class="btn btn-primary" href="edit_user.php?user_id=<?php echo $user['user_id']; ?>">Detalhes</a></td>
                                     <td><button><a class="btn btn-primary" href="#" onclick="confirmDelete(<?php echo $user['user_id']; ?>)">Excluir</a></button></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
+                </div>
             </div>
         </div>
     </div>

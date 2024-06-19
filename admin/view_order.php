@@ -69,6 +69,7 @@ if (isset($_GET['order_id'])) {
                         <p>Email: <?php echo htmlspecialchars($user['user_email'] ?? ''); ?></p>
                         <p>Cidade: <?php echo htmlspecialchars($order['user_city']); ?></p>
                         <p>Endereço: <?php echo htmlspecialchars($order['user_address']); ?></p>
+                        <p>Complemento: <?php echo htmlspecialchars($order['complemento']); ?></p>
                     </div>
 
                 <?php } else { ?>

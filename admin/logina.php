@@ -31,12 +31,12 @@ if(isset($_POST['login_btn'])) {
             exit();
         } else {
             // Senha incorreta
-            header('location: login.php?error=Senha ou email incorretos');
+            header('location: logina.php?error=Senha ou email incorretos');
             exit();
         }
     } else {
         // Erro genérico de banco de dados
-        header('location: login.php?error=Alguma coisa deu errado');
+        header('location: logina.php?error=Alguma coisa deu errado');
         exit();
     }
 }

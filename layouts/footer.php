@@ -25,13 +25,15 @@
           <div>
             <h6 class="text-uppercase">Email</h6>
             <p>contato.kronostech@gmail.com</p>
+            <h6 class="text-uppercase">Whatsapp</h6>
+            <p>(61)9 8248-2666</p>
           </div>
         </div>
         <div class="footer-one col-lg-3 col-md-6 col-sm-12">
           <h5 class="pb-12">Segurança e Privacidade</h5>
           <ul class="text">
           <li><a href="https://www.procon.df.gov.br/wp-content/uploads/2019/08/Codigo-do-consumidor-FINAL.pdf" target="_blank">Código de Defesa do Consumidor</a></li>
-            <li><a href="#">Política de Segurança e Privacidade</a></li>
+            
           </ul>
         </div>
       </div>
@@ -40,7 +42,7 @@
         <div class="row container justify-content-start mx-auto">
 
           <div class="col-lg-3 col-md-5 col-sm-12 mb-4">
-            <!--<img src="assets/imgs/pagas.png" /> -->
+            <img src="assets/imgs/pagas.png" style="width:15%;"/>
           </div>
 
           <div class="col-lg-5 col-md-5 col-sm-12 mb-4 text-nowrap mb-2">
